@@ -5,9 +5,12 @@ import 'package:flutter_work_utils/models/routing_data.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:silvertime/include.dart';
+import 'package:silvertime/providers/auth.dart';
 import 'package:silvertime/providers/ui.dart';
+import 'package:silvertime/screens/auth/login.dart';
 import 'package:silvertime/screens/home.dart';
 import 'package:silvertime/screens/not_found.dart';
+import 'package:silvertime/screens/notifications.dart';
 import 'package:silvertime/screens/splash.dart';
 
 class RouterAdmin {
@@ -44,19 +47,21 @@ class RouterAdmin {
         'queryParameters: ${routingData.queryParameters} path: ${settings.name}'
       );
 
-      // bool auth = true;
-      // bool auth = Provider.of<Auht> (context, listen: false).tryAutoLogin ();
+      bool auth = Provider.of<Auth> (context, listen: false).tryAutoLogin ();
       if (routingData.route != "/splash") {
-        // if (!auth) {
-        //   printWarning ("Not authenticated");
-        //   printWarning ("Redirecting");
-        // }
+        if (!auth) {
+          printWarning ("Not authenticated");
+          printWarning ("Redirecting");
+          forceRoute = LoginScreen.routeName;
+          settings = RouteSettings (
+            arguments: settings.arguments, name: forceRoute
+          );
+        }
       }
 
       String routeToLook = forceRoute ?? routingData.route ?? "";
 
-      bool dark = false;
-      // bool dark = Provider.of<UI> (context, listen: false).modeVal == Mode.dark;
+      bool dark = Provider.of<UI> (context, listen: false).modeVal == Mode.dark;
 
       Provider.of<UI> (context, listen: false).currentRoute = routeToLook;
 
@@ -64,6 +69,16 @@ class RouterAdmin {
         case HomeScreen.routeName:
           return getMaterialPageRoute(
             const HomeScreen (), 
+            settings, dark
+          );
+        case LoginScreen.routeName:
+          return getMaterialPageRoute(
+            const LoginScreen(), 
+            settings, dark
+          );
+        case NotificationsScreen.routeName:
+          return getMaterialPageRoute(
+            const NotificationsScreen(), 
             settings, dark
           );
         case SplashScreen.routeName:
