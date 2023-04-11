@@ -42,6 +42,8 @@ final ThemeData lightTheme = ThemeData(
     displayColor: UIColors.black
   ),
   shadowColor: Colors.black12,
+  highlightColor: Colors.transparent,
+  splashColor: Colors.transparent,
   iconTheme: const IconThemeData(
     color: UIColors.black,
     size: 24
@@ -131,6 +133,8 @@ final ThemeData darkTheme = ThemeData(
     displayColor: UIColors.white
   ),
   shadowColor: Colors.grey[900]!,
+  highlightColor: Colors.transparent,
+  splashColor: Colors.transparent,
   iconTheme: const IconThemeData(
     color: UIColors.white,
     size: 24
