@@ -2040,6 +2040,46 @@ class S {
     );
   }
 
+  /// `Password`
+  String get password {
+    return Intl.message(
+      'Password',
+      name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome Back!`
+  String get welcomeBackNoName {
+    return Intl.message(
+      'Welcome Back!',
+      name: 'welcomeBackNoName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login`
+  String get login {
+    return Intl.message(
+      'Login',
+      name: 'login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Required`
+  String get requiredText {
+    return Intl.message(
+      'Required',
+      name: 'requiredText',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Worker successfully deleted`
   String get workerSuccessfullyDeleted {
     return Intl.message(

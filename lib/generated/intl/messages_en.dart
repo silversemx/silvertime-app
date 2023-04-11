@@ -138,6 +138,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "invalid": MessageLookupByLibrary.simpleMessage("Invalid"),
         "invalidEmail": MessageLookupByLibrary.simpleMessage("Invalid Email"),
         "legal": MessageLookupByLibrary.simpleMessage("Legal"),
+        "login": MessageLookupByLibrary.simpleMessage("Login"),
         "machine": MessageLookupByLibrary.simpleMessage("Machine"),
         "machineConfigurationUpdatedSuccessfully":
             MessageLookupByLibrary.simpleMessage(
@@ -187,11 +188,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "notSelected":
             MessageLookupByLibrary.simpleMessage("An item must be selected"),
         "okay": MessageLookupByLibrary.simpleMessage("Okay"),
+        "password": MessageLookupByLibrary.simpleMessage("Password"),
         "path": MessageLookupByLibrary.simpleMessage("Path"),
         "platformOverview":
             MessageLookupByLibrary.simpleMessage("Platform overview"),
         "progress": MessageLookupByLibrary.simpleMessage("Progress"),
         "region": MessageLookupByLibrary.simpleMessage("Region"),
+        "requiredText": MessageLookupByLibrary.simpleMessage("Required"),
         "resources": MessageLookupByLibrary.simpleMessage("Resources"),
         "role": MessageLookupByLibrary.simpleMessage("Role"),
         "scope": MessageLookupByLibrary.simpleMessage("Scope"),
@@ -299,6 +302,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "weeklyAccess":
             MessageLookupByLibrary.simpleMessage("Average Weekly Access"),
         "welcomeBack": m1,
+        "welcomeBackNoName":
+            MessageLookupByLibrary.simpleMessage("Welcome Back!"),
         "workerInstanceSpeed_background":
             MessageLookupByLibrary.simpleMessage("Background"),
         "workerInstanceSpeed_backup":

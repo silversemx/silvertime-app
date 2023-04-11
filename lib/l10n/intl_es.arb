@@ -10,6 +10,10 @@
         }
     },
     "about": "About",
+    "password": "Contraseña",
+    "welcomeBackNoName": "¡Bienvenido!",
+    "login": "Iniciar Sesión",
+    "requiredText": "Requerido",
     "aboutAstra": "Sobre Astra Zeneca",
     "actions": "Acciones",
     "activeUsers": "Usuarios Activos",
