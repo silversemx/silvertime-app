@@ -2349,6 +2349,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Select One`
+  String get resourceType_none {
+    return Intl.message(
+      'Select One',
+      name: 'resourceType_none',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Services`
+  String get resourceType_services {
+    return Intl.message(
+      'Services',
+      name: 'resourceType_services',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Maintenance`
+  String get resourceType_maintenance {
+    return Intl.message(
+      'Maintenance',
+      name: 'resourceType_maintenance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Interruptions`
+  String get resourceType_interruptions {
+    return Intl.message(
+      'Interruptions',
+      name: 'resourceType_interruptions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reports`
+  String get resourceType_reports {
+    return Intl.message(
+      'Reports',
+      name: 'resourceType_reports',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View`
+  String get view {
+    return Intl.message(
+      'View',
+      name: 'view',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

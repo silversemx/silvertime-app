@@ -188,6 +188,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "progress": MessageLookupByLibrary.simpleMessage("Progreso"),
         "region": MessageLookupByLibrary.simpleMessage("Región"),
         "requiredText": MessageLookupByLibrary.simpleMessage("Requerido"),
+        "resourceType_interruptions":
+            MessageLookupByLibrary.simpleMessage("Interrupciones"),
+        "resourceType_maintenance":
+            MessageLookupByLibrary.simpleMessage("Mantenimientos"),
+        "resourceType_none":
+            MessageLookupByLibrary.simpleMessage("Selecciona Uno"),
+        "resourceType_reports":
+            MessageLookupByLibrary.simpleMessage("Reportes"),
+        "resourceType_services":
+            MessageLookupByLibrary.simpleMessage("Servicios"),
         "resources": MessageLookupByLibrary.simpleMessage("recursos"),
         "role": MessageLookupByLibrary.simpleMessage("Rol"),
         "scope": MessageLookupByLibrary.simpleMessage("Acance"),
@@ -289,6 +299,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "username": MessageLookupByLibrary.simpleMessage("Nombre de usuario"),
         "users": MessageLookupByLibrary.simpleMessage("usuarios"),
         "value": MessageLookupByLibrary.simpleMessage("Valor"),
+        "view": MessageLookupByLibrary.simpleMessage("Vista"),
         "web": MessageLookupByLibrary.simpleMessage("Web"),
         "weeklyAccess":
             MessageLookupByLibrary.simpleMessage("Acceso Semanal Promedio"),

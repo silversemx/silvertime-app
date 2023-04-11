@@ -195,6 +195,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "progress": MessageLookupByLibrary.simpleMessage("Progress"),
         "region": MessageLookupByLibrary.simpleMessage("Region"),
         "requiredText": MessageLookupByLibrary.simpleMessage("Required"),
+        "resourceType_interruptions":
+            MessageLookupByLibrary.simpleMessage("Interruptions"),
+        "resourceType_maintenance":
+            MessageLookupByLibrary.simpleMessage("Maintenance"),
+        "resourceType_none": MessageLookupByLibrary.simpleMessage("Select One"),
+        "resourceType_reports": MessageLookupByLibrary.simpleMessage("Reports"),
+        "resourceType_services":
+            MessageLookupByLibrary.simpleMessage("Services"),
         "resources": MessageLookupByLibrary.simpleMessage("Resources"),
         "role": MessageLookupByLibrary.simpleMessage("Role"),
         "scope": MessageLookupByLibrary.simpleMessage("Scope"),
@@ -298,6 +306,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "username": MessageLookupByLibrary.simpleMessage("Username"),
         "users": MessageLookupByLibrary.simpleMessage("Users"),
         "value": MessageLookupByLibrary.simpleMessage("Value"),
+        "view": MessageLookupByLibrary.simpleMessage("View"),
         "web": MessageLookupByLibrary.simpleMessage("Web"),
         "weeklyAccess":
             MessageLookupByLibrary.simpleMessage("Average Weekly Access"),

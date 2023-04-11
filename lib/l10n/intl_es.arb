@@ -226,5 +226,11 @@
     "hour": "Hora",
     "minutes": "Minutos",
     "start": "Inicio",
-    "end": "Fin"
+    "end": "Fin",
+    "resourceType_none": "Selecciona Uno",
+    "resourceType_services": "Servicios",
+    "resourceType_maintenance": "Mantenimientos",
+    "resourceType_interruptions": "Interrupciones",
+    "resourceType_reports": "Reportes",
+    "view": "Vista"
 }
