@@ -7,3 +7,4 @@ export 'package:silvertime/style/colors.dart';
 export 'package:silvertime/utils/dates.dart';
 export 'package:silvertime/utils/sizes.dart';
 export 'package:silvertime/values.dart';
+export 'package:silvertime/widgets/inputs/custom_inputs.dart';
