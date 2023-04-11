@@ -3,15 +3,15 @@ import 'package:diacritic/diacritic.dart';
 import 'package:flutter_work_utils/flutter_utils.dart';
 
 class AuthInfo {
-  String _username = "";
-  String get username => _username;
+  String _email = "";
+  String get email => _email;
   String _password = "";
   String get password => _password;
   String _confirmPassword = "";
   String get confirmPassword => _confirmPassword;
 
-  set username (String username) {
-    _username = removeDiacritics(username.toLowerCase()).replaceAll(RegExp(r"\s+"), "");
+  set email (String email) {
+    _email = removeDiacritics(email.toLowerCase()).replaceAll(RegExp(r"\s+"), "");
   }
 
   set password (String password) {
@@ -26,7 +26,7 @@ class AuthInfo {
 
   Map<String, dynamic> toJsonSignup(){
     return {
-      "username": username,
+      "email": email,
       "password": password,
       "confirm": confirmPassword
     };
@@ -34,7 +34,7 @@ class AuthInfo {
 
   Map<String, dynamic> toJsonLogin(){
     return {
-      "username": username,
+      "email": email,
       "password": password,
     };
   }
