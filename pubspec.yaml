@@ -28,6 +28,7 @@ dependencies:
   http_request_utils: ^0.2.8
   intl: ^0.17.0
   jwt_decode: ^0.3.1
+  lottie: ^2.3.2
   page_transition: ^2.0.9
   provider: ^6.0.5
   searchfield: ^0.6.9
@@ -36,7 +37,6 @@ dependencies:
   url_strategy: ^0.2.0
 
 dev_dependencies:
-
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
@@ -44,7 +44,7 @@ dev_dependencies:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/logos/silvertime.png"
+  image_path: "assets/logos/logo.png"
 
 flutter:
 
@@ -52,6 +52,7 @@ flutter:
 
   assets:
     - assets/
+    - assets/animations/
     - assets/logos/
 
 flutter_intl:
