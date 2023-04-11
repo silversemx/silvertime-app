@@ -6,6 +6,7 @@ import 'package:http_request_utils/body_utils.dart';
 import 'package:jwt_decode/jwt_decode.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:silvertime/include.dart';
+import 'package:silvertime/models/user/auth.dart';
 import 'package:silvertime/models/user/user.dart';
 
 class AuthProvider extends ChangeNotifier {
@@ -89,6 +90,17 @@ class Auth extends ChangeNotifier {
     }
   }
 
+  void _setToken(String body) {
+    final decoded = json.decode(body);
+    _token = decoded["token"];
+    if(_token != null){
+      Map<String, dynamic> values = Jwt.parseJwt(_token!);
+      _userValues = User.fromToken(values);
+      SharedPreferences prefs = locator<SharedPreferences>();
+      prefs.setString(jwtKey, _token!);
+    }
+  }
+
   bool tryAutoLogin() {
     _token = locator<SharedPreferences>().getString (jwtKey);
     if (_token == null && forcedBearerToken.isNotEmpty) {
@@ -105,6 +117,36 @@ class Auth extends ChangeNotifier {
     checkAccess();
 
     return true;
+  }
+
+  Future<void> login (AuthInfo authInfo) async {
+    const url = "$serverURL/api/users/login";
+    
+    try {
+      final res = await http.post(
+        Uri.parse(url),
+        body: json.encode (
+          authInfo.toJsonLogin()
+        )
+      );
+    
+      switch(res.statusCode){
+        case 200:
+          _setToken (res.body);
+        break;
+        default:
+          throw HttpException(
+            res.body, code: Code.request, status: res.statusCode, route: url
+          );
+      }
+    } on HttpException {
+      rethrow;
+    } catch (error, bt) {
+      if(runtime == "Development"){
+        Completer().completeError(error, bt);
+      }
+      throw HttpException(error.toString(), code: Code.system, route: url);
+    }
   }
 
   Future<void> getInfo([String? id]) async {
