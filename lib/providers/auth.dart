@@ -78,7 +78,6 @@ class Auth extends ChangeNotifier {
         break;
         default:
           printWarning ("Not authorized, redirecting!");
-          //TODO: Redirect?
       }
     } on HttpException {
       rethrow;
@@ -114,7 +113,7 @@ class Auth extends ChangeNotifier {
 
     printSuccess("Authenticated");
     _userValues = User.fromToken(Jwt.parseJwt(_token!));
-    checkAccess();
+    // checkAccess();
 
     return true;
   }
