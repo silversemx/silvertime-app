@@ -175,7 +175,7 @@ class _CustomInputSearchFieldState<T> extends State<CustomInputSearchField> {
             },
             child: Text (
               S.of(context).clearSelection,
-              style: Theme.of(context).textTheme.headline4!.copyWith(
+              style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                 decoration: TextDecoration.underline
               ),
             ),

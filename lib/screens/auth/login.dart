@@ -99,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      // backgroundColor: Theme.of(context).colorScheme.background,
       body: GestureDetector(
         onTap: () => unfocus(context),
         child: Container (
@@ -120,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 16),
               Text (
                 S.of(context).welcomeBackNoName,
-                style: Theme.of(context).textTheme.headline1,
+                style: Theme.of(context).textTheme.displayLarge,
               ),
               const SizedBox(height: 48),
               _form (),
@@ -148,7 +148,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     )
                     : Text (
                       S.of(context).login,
-                      style: Theme.of(context).textTheme.headline3!.copyWith(
+                      style: Theme.of(context).textTheme.displaySmall!.copyWith(
                         color: UIColors.white
                       ),
                       textAlign: TextAlign.center,

@@ -105,43 +105,36 @@ class _StatusUpdateDialogState<T> extends State<StatusUpdateDialog<T>> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      child: Scrollbar(
-        controller: _scrollController,
-        child: Container (
-          padding: const EdgeInsets.symmetric(horizontal: 32),
-          constraints: BoxConstraints (
-            maxHeight: MediaQuery.of(context).size.height * 0.6,
+      child: Container (
+        padding: const EdgeInsets.symmetric(horizontal: 24),
+        constraints: BoxConstraints (
+          maxHeight: MediaQuery.of(context).size.height * 0.8,
+        ),
+        child: _loading
+        ? Center (
+          child: SpinKitDoubleBounce(
+            color: Theme.of(context).primaryColor,
+            size: 24,
           ),
-          child: _loading
-          ? Center (
-            child: SpinKitDoubleBounce(
-              color: Theme.of(context).primaryColor,
-              size: 24,
+        )
+        : Column(
+          children: [
+            const SizedBox(height: 32),
+            Text (
+              S.of(context).history,
+              style: Theme.of(context).textTheme.displayMedium,
             ),
-          )
-          : SingleChildScrollView (
-            controller: _scrollController,
-            child: Column(
-              children: [
-                const SizedBox(height: 32),
-                Text (
-                  S.of(context).history,
-                  style: Theme.of(context).textTheme.displayMedium,
-                ),
-                const SizedBox(height: 16),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.4,
-                  child: ListView.separated(
-                    itemCount: history.length,
-                    itemBuilder: (ctx, i) {
-                      return _statusUpdateData(history[i]);
-                    },
-                    separatorBuilder: (ctx, i) => const Divider (),
-                  ),
-                ),
-              ],
+            const SizedBox(height: 16),
+            Expanded(
+              child: ListView.separated(
+                itemCount: history.length,
+                itemBuilder: (ctx, i) {
+                  return _statusUpdateData(history[i]);
+                },
+                separatorBuilder: (ctx, i) => const Divider (),
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );

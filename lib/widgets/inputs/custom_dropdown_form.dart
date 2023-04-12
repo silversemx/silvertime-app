@@ -36,7 +36,7 @@ class CustomDropdownFormField<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle itemTextStyle = textStyle ?? Theme.of(context).textTheme.bodyText1!;
+    TextStyle itemTextStyle = textStyle ?? Theme.of(context).textTheme.bodyLarge!;
 
     return Container(
       margin: margin ?? const EdgeInsets.only(bottom: 16),
@@ -87,14 +87,14 @@ class CustomDropdownFormField<T> extends StatelessWidget {
               //   )
               //   : null
               // ),
-              errorStyle: Theme.of(context).textTheme.caption?.copyWith(
+              errorStyle: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: Colors.red
               ),
             ),
             focusColor: UIColors.hint,
             dropdownColor: textStyle != null
             ? getColorContrast(textStyle!.color!)
-            : dropdownColor ?? Theme.of(context).scaffoldBackgroundColor,
+            : dropdownColor ?? Theme.of(context).colorScheme.background,
             validator: (T? value) {
               if (hintItem != null) {
                 if (value == items [hintItem!]) {
