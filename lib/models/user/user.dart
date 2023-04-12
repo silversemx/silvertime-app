@@ -68,6 +68,7 @@ class User {
   String username = "";
   UserStatus status = UserStatus.none;
   String role = "";
+  String? roleName;
   DateTime date = DateTime.now ();
 
   String get fullName => "$firstName $lastName";
@@ -79,6 +80,7 @@ class User {
       this.firstName = "",
       this.lastName = "",
       this.email = "",
+      this.roleName,
       this.status = UserStatus.none,
       DateTime? date
   }) {
@@ -115,7 +117,8 @@ class User {
       status: UserStatus.values [ 
         jsonField<int> (json, ["status",],  nullable: false) 
       ],
-      role: jsonField<String> (json, ["role", "\$oid"],  nullable: false),
+      role: jsonField<String> (json, ["role", "_id", "\$oid"],  nullable: false),
+      roleName: jsonField<String> (json, ["role", "name"]),
       date: DateTime.fromMillisecondsSinceEpoch(
         jsonField<int> (json, ["date", "\$date"]) ?? 0,
       )
