@@ -982,6 +982,16 @@ class S {
     );
   }
 
+  /// `Instancias`
+  String get instances {
+    return Intl.message(
+      'Instancias',
+      name: 'instances',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Interruptions`
   String get interruptions {
     return Intl.message(
@@ -1382,11 +1392,41 @@ class S {
     );
   }
 
+  /// `New report`
+  String get newReport {
+    return Intl.message(
+      'New report',
+      name: 'newReport',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `No information was found`
   String get noInformation {
     return Intl.message(
       'No information was found',
       name: 'noInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `There are no instances`
+  String get noInstances {
+    return Intl.message(
+      'There are no instances',
+      name: 'noInstances',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `There are no services`
+  String get noServices {
+    return Intl.message(
+      'There are no services',
+      name: 'noServices',
       desc: '',
       args: [],
     );
@@ -1442,6 +1482,16 @@ class S {
     );
   }
 
+  /// `Priority`
+  String get priority {
+    return Intl.message(
+      'Priority',
+      name: 'priority',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Programmed by`
   String get programmedBy {
     return Intl.message(
@@ -1487,6 +1537,106 @@ class S {
     return Intl.message(
       'Remove Tag filter',
       name: 'removeTagFilters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `None`
+  String get reportPriority_none {
+    return Intl.message(
+      'None',
+      name: 'reportPriority_none',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `P1`
+  String get reportPriority_one {
+    return Intl.message(
+      'P1',
+      name: 'reportPriority_one',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `P3`
+  String get reportPriority_three {
+    return Intl.message(
+      'P3',
+      name: 'reportPriority_three',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `P2`
+  String get reportPriority_two {
+    return Intl.message(
+      'P2',
+      name: 'reportPriority_two',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Zero`
+  String get reportPriority_zero {
+    return Intl.message(
+      'Zero',
+      name: 'reportPriority_zero',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reports`
+  String get reports {
+    return Intl.message(
+      'Reports',
+      name: 'reports',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `External`
+  String get reportType_external {
+    return Intl.message(
+      'External',
+      name: 'reportType_external',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Internal`
+  String get reportType_internal {
+    return Intl.message(
+      'Internal',
+      name: 'reportType_internal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `None`
+  String get reportType_none {
+    return Intl.message(
+      'None',
+      name: 'reportType_none',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Other`
+  String get reportType_other {
+    return Intl.message(
+      'Other',
+      name: 'reportType_other',
       desc: '',
       args: [],
     );
@@ -1587,6 +1737,16 @@ class S {
     return Intl.message(
       'Select One',
       name: 'selectOne',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Service`
+  String get service {
+    return Intl.message(
+      'Service',
+      name: 'service',
       desc: '',
       args: [],
     );
@@ -1767,6 +1927,16 @@ class S {
     return Intl.message(
       'Web',
       name: 'serviceType_web',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Services`
+  String get servicios {
+    return Intl.message(
+      'Services',
+      name: 'servicios',
       desc: '',
       args: [],
     );
@@ -2027,6 +2197,16 @@ class S {
     return Intl.message(
       'Stopped',
       name: 'status_stopped',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Viewed`
+  String get status_viewed {
+    return Intl.message(
+      'Viewed',
+      name: 'status_viewed',
       desc: '',
       args: [],
     );
@@ -2297,6 +2477,16 @@ class S {
     return Intl.message(
       'Time',
       name: 'time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Title`
+  String get title {
+    return Intl.message(
+      'Title',
+      name: 'title',
       desc: '',
       args: [],
     );
@@ -2627,6 +2817,116 @@ class S {
     return Intl.message(
       'Worker successfully created',
       name: 'workerSuccessfullyCreated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pick another image`
+  String get pickAnotherImage {
+    return Intl.message(
+      'Pick another image',
+      name: 'pickAnotherImage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pick an image`
+  String get pickAnImage {
+    return Intl.message(
+      'Pick an image',
+      name: 'pickAnImage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Capture another picture`
+  String get captureAnotherImage {
+    return Intl.message(
+      'Capture another picture',
+      name: 'captureAnotherImage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Capture picture`
+  String get captureImage {
+    return Intl.message(
+      'Capture picture',
+      name: 'captureImage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Camera`
+  String get camera {
+    return Intl.message(
+      'Camera',
+      name: 'camera',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Report`
+  String get createReport {
+    return Intl.message(
+      'Create Report',
+      name: 'createReport',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Report`
+  String get editReport {
+    return Intl.message(
+      'Edit Report',
+      name: 'editReport',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Report successfully created`
+  String get reportSuccessfullyCreated {
+    return Intl.message(
+      'Report successfully created',
+      name: 'reportSuccessfullyCreated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Report successfully deleted`
+  String get reportSuccessfullyDeleted {
+    return Intl.message(
+      'Report successfully deleted',
+      name: 'reportSuccessfullyDeleted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Report successfully updated`
+  String get reportSuccessfullyUpdated {
+    return Intl.message(
+      'Report successfully updated',
+      name: 'reportSuccessfullyUpdated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Gallery`
+  String get gallery {
+    return Intl.message(
+      'Gallery',
+      name: 'gallery',
       desc: '',
       args: [],
     );

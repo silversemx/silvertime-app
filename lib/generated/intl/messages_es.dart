@@ -39,7 +39,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "anErrorOcurred":
             MessageLookupByLibrary.simpleMessage("Un error ha ocurrido"),
         "areYouSure": MessageLookupByLibrary.simpleMessage("¿Estás seguro?"),
+        "camera": MessageLookupByLibrary.simpleMessage("Cámara"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancelar"),
+        "captureAnotherImage":
+            MessageLookupByLibrary.simpleMessage("Captura otra foto"),
+        "captureImage":
+            MessageLookupByLibrary.simpleMessage("Captura una foto"),
         "change": MessageLookupByLibrary.simpleMessage("Cambiar"),
         "clearSelection":
             MessageLookupByLibrary.simpleMessage("Limpiar selección"),
@@ -50,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "createMachine":
             MessageLookupByLibrary.simpleMessage("Crear Computadora"),
         "createNetwork": MessageLookupByLibrary.simpleMessage("Crear Red"),
+        "createReport": MessageLookupByLibrary.simpleMessage("Crear Reporte"),
         "createService": MessageLookupByLibrary.simpleMessage("Crear Servicio"),
         "createUser": MessageLookupByLibrary.simpleMessage("Crear Usuario"),
         "currentRange": MessageLookupByLibrary.simpleMessage("Rango Actual"),
@@ -90,6 +96,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "editMachine":
             MessageLookupByLibrary.simpleMessage("Editar Computadora"),
         "editNetwork": MessageLookupByLibrary.simpleMessage("Editar Red"),
+        "editReport": MessageLookupByLibrary.simpleMessage("Editar Reporte"),
         "editService": MessageLookupByLibrary.simpleMessage("Editar Servicio"),
         "editUser": MessageLookupByLibrary.simpleMessage("Editar Usuario"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
@@ -132,6 +139,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "filter": MessageLookupByLibrary.simpleMessage("Filtrar por"),
         "filters": MessageLookupByLibrary.simpleMessage("Filtros"),
         "format": MessageLookupByLibrary.simpleMessage("Formato"),
+        "gallery": MessageLookupByLibrary.simpleMessage("Galería"),
         "generateReports": MessageLookupByLibrary.simpleMessage(
             "¡Genera reportes desde tu celular 📱, haz saber a todos que algo ha ocurrido de manera inmediata!"),
         "history": MessageLookupByLibrary.simpleMessage("Historial"),
@@ -146,6 +154,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "instance": MessageLookupByLibrary.simpleMessage("Instancia"),
         "instanceInterruptions":
             MessageLookupByLibrary.simpleMessage("Instance Interruptions"),
+        "instances": MessageLookupByLibrary.simpleMessage("Instancias"),
         "interruptions": MessageLookupByLibrary.simpleMessage("Interrupciones"),
         "invalid": MessageLookupByLibrary.simpleMessage("Inválido"),
         "invalidEmail": MessageLookupByLibrary.simpleMessage("Email Invalido"),
@@ -198,15 +207,24 @@ class MessageLookup extends MessageLookupByLibrary {
             "Red actualizada correctamente"),
         "networking": MessageLookupByLibrary.simpleMessage("Networking"),
         "networks": MessageLookupByLibrary.simpleMessage("Redes"),
+        "newReport": MessageLookupByLibrary.simpleMessage("Nuevo Reporte"),
         "noInformation":
             MessageLookupByLibrary.simpleMessage("No hay información"),
+        "noInstances":
+            MessageLookupByLibrary.simpleMessage("No hay instancias"),
+        "noServices": MessageLookupByLibrary.simpleMessage("No hay servicios"),
         "notSelected": MessageLookupByLibrary.simpleMessage(
             "Por favor selecciona una opción"),
         "okay": MessageLookupByLibrary.simpleMessage("Okay"),
         "password": MessageLookupByLibrary.simpleMessage("Contraseña"),
         "path": MessageLookupByLibrary.simpleMessage("Path"),
+        "pickAnImage":
+            MessageLookupByLibrary.simpleMessage("Selecciona una imagen"),
+        "pickAnotherImage":
+            MessageLookupByLibrary.simpleMessage("Selecciona otra imagen"),
         "platformOverview":
             MessageLookupByLibrary.simpleMessage("Resumen de plataforma"),
+        "priority": MessageLookupByLibrary.simpleMessage("Prioridad"),
         "programmedBy": MessageLookupByLibrary.simpleMessage("Programada por"),
         "progress": MessageLookupByLibrary.simpleMessage("Progreso"),
         "receiveNotifications": MessageLookupByLibrary.simpleMessage(
@@ -214,6 +232,22 @@ class MessageLookup extends MessageLookupByLibrary {
         "region": MessageLookupByLibrary.simpleMessage("Región"),
         "removeTagFilters":
             MessageLookupByLibrary.simpleMessage("Remover filtros de tags"),
+        "reportPriority_none": MessageLookupByLibrary.simpleMessage("Ninguna"),
+        "reportPriority_one": MessageLookupByLibrary.simpleMessage("P1"),
+        "reportPriority_three": MessageLookupByLibrary.simpleMessage("P3"),
+        "reportPriority_two": MessageLookupByLibrary.simpleMessage("P2"),
+        "reportPriority_zero": MessageLookupByLibrary.simpleMessage("Cero"),
+        "reportSuccessfullyCreated": MessageLookupByLibrary.simpleMessage(
+            "Reporte creado correctamente"),
+        "reportSuccessfullyDeleted": MessageLookupByLibrary.simpleMessage(
+            "Reporte eliminado correctamente"),
+        "reportSuccessfullyUpdated": MessageLookupByLibrary.simpleMessage(
+            "Reporte actualizado correctamente"),
+        "reportType_external": MessageLookupByLibrary.simpleMessage("Externo"),
+        "reportType_internal": MessageLookupByLibrary.simpleMessage("Interno"),
+        "reportType_none": MessageLookupByLibrary.simpleMessage("Ninguno"),
+        "reportType_other": MessageLookupByLibrary.simpleMessage("Otro"),
+        "reports": MessageLookupByLibrary.simpleMessage("Reportes"),
         "requiredText": MessageLookupByLibrary.simpleMessage("Requerido"),
         "resourceType_interruptions":
             MessageLookupByLibrary.simpleMessage("Interrupciones"),
@@ -229,6 +263,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "role": MessageLookupByLibrary.simpleMessage("Rol"),
         "scope": MessageLookupByLibrary.simpleMessage("Acance"),
         "selectOne": MessageLookupByLibrary.simpleMessage("Selecciona Uno"),
+        "service": MessageLookupByLibrary.simpleMessage("Servicio"),
         "serviceInstanceType_cloud":
             MessageLookupByLibrary.simpleMessage("Nube"),
         "serviceInstanceType_local":
@@ -252,6 +287,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "serviceTags":
             MessageLookupByLibrary.simpleMessage("Etiquetas de servicios"),
         "services": MessageLookupByLibrary.simpleMessage("Servicios"),
+        "servicios": MessageLookupByLibrary.simpleMessage("Servicios"),
         "size": MessageLookupByLibrary.simpleMessage("Tamaño"),
         "solution": MessageLookupByLibrary.simpleMessage("Solución"),
         "start": MessageLookupByLibrary.simpleMessage("Inicio"),
@@ -281,6 +317,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "status_removed": MessageLookupByLibrary.simpleMessage("Eliminada"),
         "status_solved": MessageLookupByLibrary.simpleMessage("Solucionado"),
         "status_stopped": MessageLookupByLibrary.simpleMessage("Detenido"),
+        "status_viewed": MessageLookupByLibrary.simpleMessage("Visto"),
         "status_waiting": MessageLookupByLibrary.simpleMessage("Esperando"),
         "status_working": MessageLookupByLibrary.simpleMessage("Trabajando"),
         "storage": MessageLookupByLibrary.simpleMessage("Almacenamiento"),
@@ -316,6 +353,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "¡Esta acción no se puede deshacer!"),
         "tier": MessageLookupByLibrary.simpleMessage("Tier"),
         "time": MessageLookupByLibrary.simpleMessage("Tiempo"),
+        "title": MessageLookupByLibrary.simpleMessage("Título"),
         "tool": MessageLookupByLibrary.simpleMessage("herramienta"),
         "type": MessageLookupByLibrary.simpleMessage("Tipo"),
         "updateStatus":
