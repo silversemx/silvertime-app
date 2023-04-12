@@ -24,6 +24,20 @@ extension MaintenanceStatusExt on MaintenanceStatus {
     }
   }
 
+  String get emoji {
+    switch (this) {
+      case MaintenanceStatus.none:
+      case MaintenanceStatus.removed:
+        return "";
+      case MaintenanceStatus.created:
+        return "👾";
+      case MaintenanceStatus.progress:
+        return "👩🏻‍💻";
+      case MaintenanceStatus.done:
+        return "✅";
+    }
+  }
+
   Color get color {
     switch (this) {
       case MaintenanceStatus.none:
@@ -42,6 +56,10 @@ extension MaintenanceStatusExt on MaintenanceStatus {
 
   Widget widget (BuildContext context) {
     return Container (
+      constraints: const BoxConstraints (
+        minWidth: 110,
+        minHeight: 70
+      ),
       decoration: BoxDecoration (
         borderRadius: BorderRadius.circular(20),
         color: color,
@@ -54,13 +72,23 @@ extension MaintenanceStatusExt on MaintenanceStatus {
           )
         ]
       ),
-      padding: const EdgeInsets.all(4),
-      child: Text (
-        name (context),
-        style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-          color: getColorContrast(color)
+      padding: const EdgeInsets.all(8),
+      child: RichText (
+        text: TextSpan (
+          text: "${name (context)}\n",
+          style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+            color: getColorContrast(color)
+          ),
+          children: [
+            TextSpan (
+              text: emoji,
+              style: Theme.of(context).textTheme.headlineSmall
+            )
+          ]
         ),
-      ),
+        maxLines: 2,
+        textAlign: TextAlign.center,
+      )
     );
   }
 }
