@@ -1,9 +1,15 @@
+import 'dart:async';
+import 'dart:math';
+
 import 'package:flutter/scheduler.dart';
 import 'package:http_request_utils/models/http_exception.dart';
 import 'package:provider/provider.dart';
 import 'package:silvertime/include.dart';
-import 'package:silvertime/models/overview.dart';
+import 'package:silvertime/models/overview/overview.dart';
+import 'package:silvertime/models/overview/overview_types.dart';
 import 'package:silvertime/models/resources/service/service.dart';
+import 'package:silvertime/models/status/interruption/interruption.dart';
+import 'package:silvertime/models/status/maintenance/maintenance.dart';
 import 'package:silvertime/providers/overview.dart';
 import 'package:silvertime/screens/resources/service_overview.dart';
 import 'package:silvertime/style/container.dart';
@@ -12,8 +18,12 @@ import 'package:skeletons/skeletons.dart';
 
 class StatusBoxWidget extends StatefulWidget {
   final Service service;
+  final bool dummy;
+  final OverviewFilter filter;
   const StatusBoxWidget({
     super.key,
+    this.dummy = false,
+    this.filter = OverviewFilter.none,
     required this.service
   });
 
@@ -24,9 +34,12 @@ class StatusBoxWidget extends StatefulWidget {
 class _StatusBoxWidgetState extends State<StatusBoxWidget> {
   bool _loading = true;
   final ScrollController _scrollController = ScrollController();
-  late Overview overview;
+  final GlobalKey _dummyTooltipKey = GlobalKey();
+  Overview overview = Overview.empty ();
   double unitIndicatorWidth = 16;
   double unitIndicatorRightMargin = 12;
+  Timer? dummyTimer;
+  OverviewData dummyServiceStatus = OverviewData.empty ();
 
   void _initController () async {
     SchedulerBinding.instance.addPostFrameCallback((_) {
@@ -36,6 +49,12 @@ class _StatusBoxWidgetState extends State<StatusBoxWidget> {
           curve: Curves.bounceIn
         );
     });
+  }
+  
+  @override
+  void dispose() {
+    dummyTimer?.cancel();
+    super.dispose();
   }
 
   @override
@@ -50,18 +69,102 @@ class _StatusBoxWidgetState extends State<StatusBoxWidget> {
     Future.microtask(_fetchInfo);
   }
 
+  void _initDummyData () {
+    setState(() {
+      overview = Overview (
+      service: widget.service,
+      instances: [],
+      data: List<OverviewData>.generate(
+        10, 
+        (index) => OverviewData (
+          date: DateTime (2023, 3, index),
+          instances: List<Interruption>.generate(
+            Random().nextInt(2), 
+            (index) => Interruption.empty (),
+          ),
+          interruptions: List<Interruption>.generate(
+            Random().nextInt(2), 
+            (index) => Interruption.empty (),
+          ),
+          maintenances: List<Maintenance>.generate(
+            Random().nextInt(2), 
+            (index) => Maintenance.empty (),
+          )
+        )
+      )
+    );
+    dummyServiceStatus = overview.data.last;
+  });
+  dummyTimer = Timer.periodic(
+    const Duration (seconds: 1), 
+    (timer) {
+      overview = Overview (
+        service: widget.service,
+        instances: [],
+        data: List<OverviewData>.generate(
+          10, 
+          (index) => OverviewData (
+            date: DateTime (2023, 3, index),
+            instances: List<Interruption>.generate(
+              Random().nextInt(2), 
+              (index) => Interruption.empty (),
+            ),
+            interruptions: List<Interruption>.generate(
+              Random().nextInt(2), 
+              (index) => Interruption.empty (),
+            ),
+            maintenances: List<Maintenance>.generate(
+              Random().nextInt(2), 
+              (index) => Maintenance.empty (),
+            )
+          )
+        )
+      );
+      dummyServiceStatus = overview.data.last;
+      setState(() { });
+    });
+  }
+
   void _fetchInfo() async {
     setState(() {
       _loading = true;
     });
     try {
-      overview = await Provider.of<Overviews> (
-        context, listen: false
-      ).getOverviewState(
-        widget.service.id
-      );
-      if (_scrollController.positions.isNotEmpty) {
-        _initController();
+      if (widget.dummy) {
+        _initDummyData();
+      } else {
+        overview = await Provider.of<Overviews> (
+          context, listen: false
+        ).getOverviewState(
+          widget.service.id
+        );
+
+        List<OverviewData> overviewData = overview.data;
+          switch (widget.filter) {
+            case OverviewFilter.none:
+              break;
+            case OverviewFilter.interruptions:
+              overviewData = overviewData.where (
+                (data) => data.interruptions.isNotEmpty
+              ).toList();
+              break;
+            case OverviewFilter.maintenances:
+              overviewData = overviewData.where (
+                (data) => data.maintenances.isNotEmpty
+              ).toList();
+              break;
+            case OverviewFilter.instances:
+              overviewData = overviewData.where (
+                (data) => data.instances.isNotEmpty
+              ).toList();
+              break;
+          }
+
+          overview.data = overviewData;
+
+        if (_scrollController.positions.isNotEmpty) {
+          _initController();
+        }
       }
     } on HttpException catch(error) {
       showErrorDialog(context, exception: error);
@@ -70,20 +173,26 @@ class _StatusBoxWidgetState extends State<StatusBoxWidget> {
         setState(() {
           _loading = false;
         });
+        dynamic tooltip = _dummyTooltipKey.currentState;
+        tooltip?.ensureTooltipVisible ();
       }
     }
   }
 
   Widget _statusIndicator (OverviewData data) {
+    OverviewData statusData = widget.dummy
+      ? dummyServiceStatus
+      : data;
+
     return Container(
       width: 16,
       height: 16,
       decoration: BoxDecoration (
-        color: data.color,
+        color: statusData.color,
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
-            color: data.color.withOpacity(0.3),
+            color: statusData.color.withOpacity(0.3),
             spreadRadius: 3,
             blurRadius: 3,
             offset: Offset.zero
@@ -113,32 +222,56 @@ class _StatusBoxWidgetState extends State<StatusBoxWidget> {
   }
 
   Widget _unitIndicator (OverviewData data) {
-    return InkWell(
-      onTap: () {
-        Navigator.of(context).push (
-          MaterialPageRoute(
-            builder: (ctx) => ServiceOverviewScreen (
-              data: data,
-              service: widget.service,
-            )
-          )
-        );
-      },
-      child: Container(
-        margin: EdgeInsets.only(right: unitIndicatorRightMargin),
-        width: unitIndicatorWidth,
-        height: 35,
-        decoration: BoxDecoration (
-          color: data.color,
-          borderRadius: BorderRadius.circular(4),
-          boxShadow: [
-            BoxShadow(
-              color: data.color.withOpacity(0.3),
-              spreadRadius: 1,
-              blurRadius: 0.5,
-              offset: Offset.zero
-            )
-          ]
+    return Tooltip(
+      message: data.date.dateString,
+      child: InkWell(
+        onTap: () {
+          if (!widget.dummy) {
+            Navigator.of(context).push (
+              MaterialPageRoute(
+                builder: (ctx) => ServiceOverviewScreen (
+                  data: data,
+                  service: widget.service,
+                )
+              )
+            );
+          }
+        },
+        child: Container(
+          margin: EdgeInsets.only(right: unitIndicatorRightMargin),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                width: unitIndicatorWidth,
+                height: 35,
+                decoration: BoxDecoration (
+                  color: data.color,
+                  borderRadius: BorderRadius.circular(4),
+                  boxShadow: [
+                    BoxShadow(
+                      color: data.color.withOpacity(0.3),
+                      spreadRadius: 1,
+                      blurRadius: 0.5,
+                      offset: Offset.zero
+                    )
+                  ]
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text (
+                "${
+                  data.date.day.toString().padLeft(2, "0")
+                }-${
+                  data.date.month.toString().padLeft(2, "0")
+                }",
+                style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                  color: UIColors.hint
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -157,7 +290,9 @@ class _StatusBoxWidgetState extends State<StatusBoxWidget> {
           _title (),
           const SizedBox(height: 16),
           SingleChildScrollView(
-            physics: const BouncingScrollPhysics (),
+            physics: overview.data.length > 11
+            ? const BouncingScrollPhysics ()
+            : const NeverScrollableScrollPhysics(),
             scrollDirection: Axis.horizontal,
             controller: _scrollController,
             child: Column(
@@ -174,8 +309,9 @@ class _StatusBoxWidgetState extends State<StatusBoxWidget> {
                         ),
                       );
                     } else {
+                      
                       return SizedBox(
-                        height: 35,
+                        height: 55,
                         child: Row (
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -194,7 +330,7 @@ class _StatusBoxWidgetState extends State<StatusBoxWidget> {
                   width: constrainedBigWidth(
                     context, 
                     (
-                      overview.data.length * unitIndicatorWidth + (
+                      overview.data.length * (unitIndicatorWidth + 13) + (
                         unitIndicatorRightMargin * overview.data.length
                       )
                     ).toDouble(),
@@ -207,7 +343,7 @@ class _StatusBoxWidgetState extends State<StatusBoxWidget> {
                       Text (
                         Provider.of<Overviews> (context, listen: false).range.end
                         .equalsIgnoreTime(DateTime.now ())
-                        ? "${overview.data.length} days ago"
+                        ? S.of(context).daysAgo(overview.data.length)
                         : Provider.of<Overviews> (
                           context, listen: false
                         ).range.start.dateString,
