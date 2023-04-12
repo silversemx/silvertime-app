@@ -52,7 +52,7 @@ extension UserStatusExt on UserStatus {
       ),
       child: Text (
         name (context),
-        style: Theme.of(context).textTheme.headline4!.copyWith(
+        style: Theme.of(context).textTheme.headlineMedium!.copyWith(
           color: getColorContrast(color)
         ),
       ),
@@ -62,18 +62,22 @@ extension UserStatusExt on UserStatus {
 
 class User {
   String id = "";
-  String name = "";
+  String firstName = "";
+  String lastName = "";
   String email = "";
   String username = "";
   UserStatus status = UserStatus.none;
   String role = "";
   DateTime date = DateTime.now ();
 
+  String get fullName => "$firstName $lastName";
+
   User({
       required this.id,
       required this.username,
       required this.role,
-      this.name = "",
+      this.firstName = "",
+      this.lastName = "",
       this.email = "",
       this.status = UserStatus.none,
       DateTime? date
@@ -85,7 +89,8 @@ class User {
 
   User.light ({
     required this.id,
-    required this.name,
+    required this.firstName,
+    required this.lastName,
     required this.username,
     required this.email
   });
@@ -100,26 +105,11 @@ class User {
     );
   }
 
-  Map<String, bool> isComplete () {
-    bool name = this.name.isNotEmpty;
-    bool username = this.username.isNotEmpty;
-    bool role = this.role.isNotEmpty;
-
-    return {
-      "name": !name,
-      "username": !username,
-      "role": !role,
-      "total": 
-        name &&
-        username &&
-        role
-    };
-  }
-
   factory User.fromJson (dynamic json) {
     return User (
       id: jsonField<String> (json, ["_id", "\$oid"], nullable: false),
-      name: jsonField<String> (json, ["name",],  nullable: false),
+      firstName: jsonField<String> (json, ["first_name",],  nullable: false),
+      lastName: jsonField<String> (json, ["last_name",],  nullable: false),
       username: jsonField<String> (json, ["username",],  nullable: false),
       email: jsonField<String> (json, ["email",]) ?? "",
       status: UserStatus.values [ 
@@ -132,92 +122,4 @@ class User {
     );
   }
 
-  factory User.fromJsonInfo (dynamic json) {
-    return User (
-      id: jsonField<String> (json, ["_id", "\$oid"], nullable: false),
-      name: jsonField<String> (json, ["name",],  nullable: false),
-      username: jsonField<String> (json, ["username",],  nullable: false),
-      email: jsonField<String> (json, ["email",]) ?? "",
-      status: UserStatus.values [ 
-        jsonField<int> (json, ["status",],  nullable: false) 
-      ],
-      role: jsonField<String> (json, ["role", "_id", "\$oid"],  nullable: false),
-      date: DateTime.fromMillisecondsSinceEpoch(
-        jsonField<int> (json, ["date", "\$date"]) ?? 0,
-      )
-    );
-  }
-
-  factory User.fromJsonCache (dynamic json) {
-    return User (
-      id: jsonField<String> (json, ["_id"], nullable: false),
-      name: jsonField<String> (json, ["name",],  nullable: false),
-      username: jsonField<String> (json, ["username",],  nullable: false),
-      email: jsonField<String> (json, ["email",]) ?? "",
-      status: UserStatus.values [ 
-        jsonField<int> (json, ["status",],  nullable: false) 
-      ],
-      role: jsonField<String> (json, ["role"],  nullable: false),
-      date: DateTime.now ()
-    );
-  }
-
-  factory User.fromJsonStaff (dynamic json) {
-    return User (
-      id: jsonField<String> (json, ["_id", "\$oid"], nullable: false),
-      name: jsonField<String> (json, ["name",],  nullable: false),
-      username: jsonField<String> (json, ["username",],  nullable: false),
-      email: jsonField<String> (json, ["email",]) ?? "",
-      role: jsonField<String> (json, ["role", "\$oid"],  nullable: false),
-      date: DateTime.fromMillisecondsSinceEpoch(
-        jsonField<int> (json, ["date", "\$date"]) ?? 0,
-      )
-    );
-  }
-
-  factory User.fromJsonLight (dynamic json ) {
-    return User.light (
-      id: jsonField<String> (json, ["_id", "\$oid"], nullable: false),
-      name: jsonField<String> (json, ["name"],  nullable: false),
-      username: jsonField<String> (json, ["username"],  nullable: false),
-      email: jsonField<String> (json, ["email",],  defaultValue: "No email"),
-    );
-  }
-
-  factory User.fromJsonSearch (dynamic json) {
-    return User (
-      id: jsonField<String> (json, ["_id"], nullable: false),
-      name: jsonField<String> (json, ["name",],  nullable: false),
-      username: jsonField<String> (json, ["username",],  nullable: false),
-      email: jsonField<String> (json, ["email",]) ?? "",
-      status: UserStatus.values [ 
-        jsonField<int> (json, ["status",],  nullable: false) 
-      ],
-      role: jsonField<String> (json, ["role"],  nullable: false),
-      date: DateTime.now ()
-    );
-  }
-
-  factory User.from (User user) {
-    return User (
-      id: user.id,
-      name: user.name,
-      role: user.role,
-      username: user.username,
-      email: user.email,
-      date: user.date,
-      status: user.status
-    );
-  }
-
-  @override
-  int get hashCode => Object.hash (id, name, username, email);
-
-  @override
-  bool operator ==(dynamic other)  {
-    return other.id == id &&
-      other.name == name && 
-      other.username == username && 
-      other.email == email;
-  }
 }
