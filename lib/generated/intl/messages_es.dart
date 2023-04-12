@@ -142,6 +142,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("En la autorización"),
         "inDashboard": MessageLookupByLibrary.simpleMessage("en el Dashboard"),
         "inServer": MessageLookupByLibrary.simpleMessage("en el servidor"),
+        "instance": MessageLookupByLibrary.simpleMessage("Instancia"),
         "instanceInterruptions":
             MessageLookupByLibrary.simpleMessage("Instance Interruptions"),
         "interruptions": MessageLookupByLibrary.simpleMessage("Interrupciones"),
@@ -210,6 +211,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "receiveNotifications": MessageLookupByLibrary.simpleMessage(
             "¡Recibe notificaciones cada que una caída haya ocurrido, un mantenimiento haya sido programado o un servicio haya cambiado de status!"),
         "region": MessageLookupByLibrary.simpleMessage("Región"),
+        "removeTagFilters":
+            MessageLookupByLibrary.simpleMessage("Remover filtros de tags"),
         "requiredText": MessageLookupByLibrary.simpleMessage("Requerido"),
         "resourceType_interruptions":
             MessageLookupByLibrary.simpleMessage("Interrupciones"),
@@ -305,6 +308,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "storages": MessageLookupByLibrary.simpleMessage("Almacenamientos"),
         "success": MessageLookupByLibrary.simpleMessage("Exito"),
         "system": MessageLookupByLibrary.simpleMessage("sistema"),
+        "tapToRemoveTag":
+            MessageLookupByLibrary.simpleMessage("*Tap para quitar tags"),
         "the": MessageLookupByLibrary.simpleMessage("La"),
         "thisActionCantBeUndone": MessageLookupByLibrary.simpleMessage(
             "¡Esta acción no se puede deshacer!"),

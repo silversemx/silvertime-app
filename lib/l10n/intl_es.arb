@@ -254,6 +254,9 @@
     "generateReports": "¡Genera reportes desde tu celular 📱, haz saber a todos que algo ha ocurrido de manera inmediata!",
     "filter": "Filtrar por",
     "daysAgo": "{count, plural, one {Hace 1 día} other {Hace {count} días}}",
+    "instance": "Instancia",
+    "removeTagFilters": "Remover filtros de tags",
+    "tapToRemoveTag": "*Tap para quitar tags",
     "@daysAgo": {
         "description": "Days ago text",
         "placeholderrs": {

@@ -275,6 +275,8 @@
     "generateReports": "Generate reports from your phone 📱, let everyone know something has happened right away!",
     "filter": "Filter by",
     "daysAgo": "{count, plural, one {1 Day ago} other {{count} Days ago}}",
+    "removeTagFilters": "Remove Tag filter",
+    "tapToRemoveTag": "*Tap to remove tag",
     "@daysAgo": {
         "description": "Days ago text",
         "placeholderrs": {
@@ -283,5 +285,6 @@
                 "default": 1
             }
         }
-    }
+    },
+    "instance": "Instance"
 }

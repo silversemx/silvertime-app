@@ -2631,6 +2631,36 @@ class S {
       args: [count],
     );
   }
+
+  /// `Remove Tag filter`
+  String get removeTagFilters {
+    return Intl.message(
+      'Remove Tag filter',
+      name: 'removeTagFilters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `*Tap to remove tag`
+  String get tapToRemoveTag {
+    return Intl.message(
+      '*Tap to remove tag',
+      name: 'tapToRemoveTag',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Instance`
+  String get instance {
+    return Intl.message(
+      'Instance',
+      name: 'instance',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

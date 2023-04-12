@@ -148,6 +148,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "inAuthorization": MessageLookupByLibrary.simpleMessage("in auth"),
         "inDashboard": MessageLookupByLibrary.simpleMessage("in Dashboard"),
         "inServer": MessageLookupByLibrary.simpleMessage("in server"),
+        "instance": MessageLookupByLibrary.simpleMessage("Instance"),
         "instanceInterruptions":
             MessageLookupByLibrary.simpleMessage("Instance Interruptions"),
         "interruptions": MessageLookupByLibrary.simpleMessage("Interruptions"),
@@ -219,6 +220,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "receiveNotifications": MessageLookupByLibrary.simpleMessage(
             "Get notified every time an outage has taken place, a maintenance is programmed or any status has changed!"),
         "region": MessageLookupByLibrary.simpleMessage("Region"),
+        "removeTagFilters":
+            MessageLookupByLibrary.simpleMessage("Remove Tag filter"),
         "requiredText": MessageLookupByLibrary.simpleMessage("Required"),
         "resourceType_interruptions":
             MessageLookupByLibrary.simpleMessage("Interruptions"),
@@ -314,6 +317,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "storages": MessageLookupByLibrary.simpleMessage("Storages"),
         "success": MessageLookupByLibrary.simpleMessage("Success"),
         "system": MessageLookupByLibrary.simpleMessage("system"),
+        "tapToRemoveTag":
+            MessageLookupByLibrary.simpleMessage("*Tap to remove tag"),
         "the": MessageLookupByLibrary.simpleMessage("The"),
         "thisActionCantBeUndone": MessageLookupByLibrary.simpleMessage(
             "This action can\'t be undone!"),
