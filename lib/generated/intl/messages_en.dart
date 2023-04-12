@@ -137,6 +137,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "executionType_test": MessageLookupByLibrary.simpleMessage("Test"),
         "exit": MessageLookupByLibrary.simpleMessage("Exit"),
         "filter": MessageLookupByLibrary.simpleMessage("Filter by"),
+        "filters": MessageLookupByLibrary.simpleMessage("Filters"),
         "format": MessageLookupByLibrary.simpleMessage("Format"),
         "generateReports": MessageLookupByLibrary.simpleMessage(
             "Generate reports from your phone 📱, let everyone know something has happened right away!"),

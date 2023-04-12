@@ -140,6 +140,26 @@ class S {
     );
   }
 
+  /// `Change`
+  String get change {
+    return Intl.message(
+      'Change',
+      name: 'change',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Here you can check service status from your pocket`
+  String get checkServiceStatus {
+    return Intl.message(
+      'Here you can check service status from your pocket',
+      name: 'checkServiceStatus',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Clear selection`
   String get clearSelection {
     return Intl.message(
@@ -190,6 +210,16 @@ class S {
     );
   }
 
+  /// `Create Maintenance`
+  String get createMaintenance {
+    return Intl.message(
+      'Create Maintenance',
+      name: 'createMaintenance',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Create Network`
   String get createNetwork {
     return Intl.message(
@@ -230,6 +260,16 @@ class S {
     );
   }
 
+  /// `Current Range`
+  String get currentRange {
+    return Intl.message(
+      'Current Range',
+      name: 'currentRange',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Average Daily Access`
   String get dailyAccess {
     return Intl.message(
@@ -237,6 +277,28 @@ class S {
       name: 'dailyAccess',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `Days`
+  String get days {
+    return Intl.message(
+      'Days',
+      name: 'days',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{count, plural, one {1 Day ago} other {{count} Days ago}}`
+  String daysAgo(num count) {
+    return Intl.plural(
+      count,
+      one: '1 Day ago',
+      other: '$count Days ago',
+      name: 'daysAgo',
+      desc: 'Days ago text',
+      args: [count],
     );
   }
 
@@ -265,6 +327,16 @@ class S {
     return Intl.message(
       'Deleting Machines',
       name: 'deletingMachines',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Deleting Maintenances`
+  String get deletingMaintenances {
+    return Intl.message(
+      'Deleting Maintenances',
+      name: 'deletingMaintenances',
       desc: '',
       args: [],
     );
@@ -450,6 +522,16 @@ class S {
     );
   }
 
+  /// `Edit Maintenance`
+  String get editMaintenance {
+    return Intl.message(
+      'Edit Maintenance',
+      name: 'editMaintenance',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Edit Network`
   String get editNetwork {
     return Intl.message(
@@ -505,6 +587,16 @@ class S {
     return Intl.message(
       'Empty field validation',
       name: 'emptyFieldValidation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `End`
+  String get end {
+    return Intl.message(
+      'End',
+      name: 'end',
       desc: '',
       args: [],
     );
@@ -575,6 +667,16 @@ class S {
     return Intl.message(
       'Timeout reached, check your internet connection',
       name: 'error_504',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Execution`
+  String get execution {
+    return Intl.message(
+      'Execution',
+      name: 'execution',
       desc: '',
       args: [],
     );
@@ -730,11 +832,51 @@ class S {
     );
   }
 
+  /// `Exit`
+  String get exit {
+    return Intl.message(
+      'Exit',
+      name: 'exit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filter by`
+  String get filter {
+    return Intl.message(
+      'Filter by',
+      name: 'filter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filters`
+  String get filters {
+    return Intl.message(
+      'Filters',
+      name: 'filters',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Format`
   String get format {
     return Intl.message(
       'Format',
       name: 'format',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Generate reports from your phone 📱, let everyone know something has happened right away!`
+  String get generateReports {
+    return Intl.message(
+      'Generate reports from your phone 📱, let everyone know something has happened right away!',
+      name: 'generateReports',
       desc: '',
       args: [],
     );
@@ -755,6 +897,26 @@ class S {
     return Intl.message(
       'Home',
       name: 'home',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hour`
+  String get hour {
+    return Intl.message(
+      'Hour',
+      name: 'hour',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `24hrs format`
+  String get hrs24Format {
+    return Intl.message(
+      '24hrs format',
+      name: 'hrs24Format',
       desc: '',
       args: [],
     );
@@ -800,6 +962,36 @@ class S {
     );
   }
 
+  /// `Instance`
+  String get instance {
+    return Intl.message(
+      'Instance',
+      name: 'instance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Instance Interruptions`
+  String get instanceInterruptions {
+    return Intl.message(
+      'Instance Interruptions',
+      name: 'instanceInterruptions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Interruptions`
+  String get interruptions {
+    return Intl.message(
+      'Interruptions',
+      name: 'interruptions',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Invalid`
   String get invalid {
     return Intl.message(
@@ -820,11 +1012,41 @@ class S {
     );
   }
 
+  /// `Get full information of major outages, interruptions and maintenances of the system, all in the same place`
+  String get knowOverviewText {
+    return Intl.message(
+      'Get full information of major outages, interruptions and maintenances of the system, all in the same place',
+      name: 'knowOverviewText',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Legal`
   String get legal {
     return Intl.message(
       'Legal',
       name: 'legal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Services per Page`
+  String get limit {
+    return Intl.message(
+      'Services per Page',
+      name: 'limit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login`
+  String get login {
+    return Intl.message(
+      'Login',
+      name: 'login',
       desc: '',
       args: [],
     );
@@ -915,6 +1137,116 @@ class S {
     return Intl.message(
       'None',
       name: 'machineType_none',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Maintenance`
+  String get maintenance {
+    return Intl.message(
+      'Maintenance',
+      name: 'maintenance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Maintenances`
+  String get maintenances {
+    return Intl.message(
+      'Maintenances',
+      name: 'maintenances',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Maintenance Successfully Created`
+  String get maintenanceSuccessfullyCreated {
+    return Intl.message(
+      'Maintenance Successfully Created',
+      name: 'maintenanceSuccessfullyCreated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Maintenance Successfully Deleted`
+  String get maintenanceSuccessfullyDeleted {
+    return Intl.message(
+      'Maintenance Successfully Deleted',
+      name: 'maintenanceSuccessfullyDeleted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Maintenance Successfully Updated`
+  String get maintenanceSuccessfullyUpdated {
+    return Intl.message(
+      'Maintenance Successfully Updated',
+      name: 'maintenanceSuccessfullyUpdated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Free`
+  String get maintenanceTime_free {
+    return Intl.message(
+      'Free',
+      name: 'maintenanceTime_free',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `None`
+  String get maintenanceTime_none {
+    return Intl.message(
+      'None',
+      name: 'maintenanceTime_none',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Other`
+  String get maintenanceTime_other {
+    return Intl.message(
+      'Other',
+      name: 'maintenanceTime_other',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Range`
+  String get maintenanceTime_range {
+    return Intl.message(
+      'Range',
+      name: 'maintenanceTime_range',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Major Interruptions`
+  String get majorInterruptions {
+    return Intl.message(
+      'Major Interruptions',
+      name: 'majorInterruptions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Minutes`
+  String get minutes {
+    return Intl.message(
+      'Minutes',
+      name: 'minutes',
       desc: '',
       args: [],
     );
@@ -1080,6 +1412,16 @@ class S {
     );
   }
 
+  /// `Password`
+  String get password {
+    return Intl.message(
+      'Password',
+      name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Path`
   String get path {
     return Intl.message(
@@ -1100,11 +1442,31 @@ class S {
     );
   }
 
+  /// `Programmed by`
+  String get programmedBy {
+    return Intl.message(
+      'Programmed by',
+      name: 'programmedBy',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Progress`
   String get progress {
     return Intl.message(
       'Progress',
       name: 'progress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Get notified every time an outage has taken place, a maintenance is programmed or any status has changed!`
+  String get receiveNotifications {
+    return Intl.message(
+      'Get notified every time an outage has taken place, a maintenance is programmed or any status has changed!',
+      name: 'receiveNotifications',
       desc: '',
       args: [],
     );
@@ -1120,6 +1482,26 @@ class S {
     );
   }
 
+  /// `Remove Tag filter`
+  String get removeTagFilters {
+    return Intl.message(
+      'Remove Tag filter',
+      name: 'removeTagFilters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Required`
+  String get requiredText {
+    return Intl.message(
+      'Required',
+      name: 'requiredText',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Resources`
   String get resources {
     return Intl.message(
@@ -1130,11 +1512,71 @@ class S {
     );
   }
 
+  /// `Interruptions`
+  String get resourceType_interruptions {
+    return Intl.message(
+      'Interruptions',
+      name: 'resourceType_interruptions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Maintenance`
+  String get resourceType_maintenance {
+    return Intl.message(
+      'Maintenance',
+      name: 'resourceType_maintenance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select One`
+  String get resourceType_none {
+    return Intl.message(
+      'Select One',
+      name: 'resourceType_none',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reports`
+  String get resourceType_reports {
+    return Intl.message(
+      'Reports',
+      name: 'resourceType_reports',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Services`
+  String get resourceType_services {
+    return Intl.message(
+      'Services',
+      name: 'resourceType_services',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Role`
   String get role {
     return Intl.message(
       'Role',
       name: 'role',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scope`
+  String get scope {
+    return Intl.message(
+      'Scope',
+      name: 'scope',
       desc: '',
       args: [],
     );
@@ -1340,6 +1782,26 @@ class S {
     );
   }
 
+  /// `Solution`
+  String get solution {
+    return Intl.message(
+      'Solution',
+      name: 'solution',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start`
+  String get start {
+    return Intl.message(
+      'Start',
+      name: 'start',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Status`
   String get status {
     return Intl.message(
@@ -1410,6 +1872,16 @@ class S {
     );
   }
 
+  /// `Detected`
+  String get status_detected {
+    return Intl.message(
+      'Detected',
+      name: 'status_detected',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Disabled`
   String get status_disabled {
     return Intl.message(
@@ -1460,11 +1932,31 @@ class S {
     );
   }
 
+  /// `Investigating`
+  String get status_investigating {
+    return Intl.message(
+      'Investigating',
+      name: 'status_investigating',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Maintenance`
   String get status_maintenance {
     return Intl.message(
       'Maintenance',
       name: 'status_maintenance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Monitoring`
+  String get status_monitoring {
+    return Intl.message(
+      'Monitoring',
+      name: 'status_monitoring',
       desc: '',
       args: [],
     );
@@ -1505,6 +1997,16 @@ class S {
     return Intl.message(
       'Removed',
       name: 'status_removed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Solved`
+  String get status_solved {
+    return Intl.message(
+      'Solved',
+      name: 'status_solved',
       desc: '',
       args: [],
     );
@@ -1740,6 +2242,36 @@ class S {
     );
   }
 
+  /// `system`
+  String get system {
+    return Intl.message(
+      'system',
+      name: 'system',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `*Tap to remove tag`
+  String get tapToRemoveTag {
+    return Intl.message(
+      '*Tap to remove tag',
+      name: 'tapToRemoveTag',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The`
+  String get the {
+    return Intl.message(
+      'The',
+      name: 'the',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `This action can't be undone!`
   String get thisActionCantBeUndone {
     return Intl.message(
@@ -1755,6 +2287,26 @@ class S {
     return Intl.message(
       'Tier',
       name: 'tier',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Time`
+  String get time {
+    return Intl.message(
+      'Time',
+      name: 'time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `tool`
+  String get tool {
+    return Intl.message(
+      'tool',
+      name: 'tool',
       desc: '',
       args: [],
     );
@@ -1890,6 +2442,16 @@ class S {
     );
   }
 
+  /// `View`
+  String get view {
+    return Intl.message(
+      'View',
+      name: 'view',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Web`
   String get web {
     return Intl.message(
@@ -1917,6 +2479,36 @@ class S {
       name: 'welcomeBack',
       desc: '',
       args: [name],
+    );
+  }
+
+  /// `Welcome Back!`
+  String get welcomeBackNoName {
+    return Intl.message(
+      'Welcome Back!',
+      name: 'welcomeBackNoName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `you needed to know everything about the`
+  String get welcomeText1 {
+    return Intl.message(
+      'you needed to know everything about the',
+      name: 'welcomeText1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome to`
+  String get welcomeTo {
+    return Intl.message(
+      'Welcome to',
+      name: 'welcomeTo',
+      desc: '',
+      args: [],
     );
   }
 
@@ -2040,46 +2632,6 @@ class S {
     );
   }
 
-  /// `Password`
-  String get password {
-    return Intl.message(
-      'Password',
-      name: 'password',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Welcome Back!`
-  String get welcomeBackNoName {
-    return Intl.message(
-      'Welcome Back!',
-      name: 'welcomeBackNoName',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Login`
-  String get login {
-    return Intl.message(
-      'Login',
-      name: 'login',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Required`
-  String get requiredText {
-    return Intl.message(
-      'Required',
-      name: 'requiredText',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Worker successfully deleted`
   String get workerSuccessfullyDeleted {
     return Intl.message(
@@ -2115,548 +2667,6 @@ class S {
     return Intl.message(
       'Zone',
       name: 'zone',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `None`
-  String get maintenanceTime_none {
-    return Intl.message(
-      'None',
-      name: 'maintenanceTime_none',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Free`
-  String get maintenanceTime_free {
-    return Intl.message(
-      'Free',
-      name: 'maintenanceTime_free',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Range`
-  String get maintenanceTime_range {
-    return Intl.message(
-      'Range',
-      name: 'maintenanceTime_range',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Other`
-  String get maintenanceTime_other {
-    return Intl.message(
-      'Other',
-      name: 'maintenanceTime_other',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Detected`
-  String get status_detected {
-    return Intl.message(
-      'Detected',
-      name: 'status_detected',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Investigating`
-  String get status_investigating {
-    return Intl.message(
-      'Investigating',
-      name: 'status_investigating',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Monitoring`
-  String get status_monitoring {
-    return Intl.message(
-      'Monitoring',
-      name: 'status_monitoring',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Solved`
-  String get status_solved {
-    return Intl.message(
-      'Solved',
-      name: 'status_solved',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Maintenance`
-  String get maintenance {
-    return Intl.message(
-      'Maintenance',
-      name: 'maintenance',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Interruptions`
-  String get interruptions {
-    return Intl.message(
-      'Interruptions',
-      name: 'interruptions',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Maintenance Successfully Created`
-  String get maintenanceSuccessfullyCreated {
-    return Intl.message(
-      'Maintenance Successfully Created',
-      name: 'maintenanceSuccessfullyCreated',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Maintenance Successfully Updated`
-  String get maintenanceSuccessfullyUpdated {
-    return Intl.message(
-      'Maintenance Successfully Updated',
-      name: 'maintenanceSuccessfullyUpdated',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Maintenance Successfully Deleted`
-  String get maintenanceSuccessfullyDeleted {
-    return Intl.message(
-      'Maintenance Successfully Deleted',
-      name: 'maintenanceSuccessfullyDeleted',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Deleting Maintenances`
-  String get deletingMaintenances {
-    return Intl.message(
-      'Deleting Maintenances',
-      name: 'deletingMaintenances',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Create Maintenance`
-  String get createMaintenance {
-    return Intl.message(
-      'Create Maintenance',
-      name: 'createMaintenance',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Edit Maintenance`
-  String get editMaintenance {
-    return Intl.message(
-      'Edit Maintenance',
-      name: 'editMaintenance',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Time`
-  String get time {
-    return Intl.message(
-      'Time',
-      name: 'time',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Scope`
-  String get scope {
-    return Intl.message(
-      'Scope',
-      name: 'scope',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `24hrs format`
-  String get hrs24Format {
-    return Intl.message(
-      '24hrs format',
-      name: 'hrs24Format',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Hour`
-  String get hour {
-    return Intl.message(
-      'Hour',
-      name: 'hour',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Minutes`
-  String get minutes {
-    return Intl.message(
-      'Minutes',
-      name: 'minutes',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Start`
-  String get start {
-    return Intl.message(
-      'Start',
-      name: 'start',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `End`
-  String get end {
-    return Intl.message(
-      'End',
-      name: 'end',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Select One`
-  String get resourceType_none {
-    return Intl.message(
-      'Select One',
-      name: 'resourceType_none',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Services`
-  String get resourceType_services {
-    return Intl.message(
-      'Services',
-      name: 'resourceType_services',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Maintenance`
-  String get resourceType_maintenance {
-    return Intl.message(
-      'Maintenance',
-      name: 'resourceType_maintenance',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Interruptions`
-  String get resourceType_interruptions {
-    return Intl.message(
-      'Interruptions',
-      name: 'resourceType_interruptions',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Reports`
-  String get resourceType_reports {
-    return Intl.message(
-      'Reports',
-      name: 'resourceType_reports',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `View`
-  String get view {
-    return Intl.message(
-      'View',
-      name: 'view',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Current Range`
-  String get currentRange {
-    return Intl.message(
-      'Current Range',
-      name: 'currentRange',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Change`
-  String get change {
-    return Intl.message(
-      'Change',
-      name: 'change',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Services per Page`
-  String get limit {
-    return Intl.message(
-      'Services per Page',
-      name: 'limit',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Days`
-  String get days {
-    return Intl.message(
-      'Days',
-      name: 'days',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Execution`
-  String get execution {
-    return Intl.message(
-      'Execution',
-      name: 'execution',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Solution`
-  String get solution {
-    return Intl.message(
-      'Solution',
-      name: 'solution',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Maintenances`
-  String get maintenances {
-    return Intl.message(
-      'Maintenances',
-      name: 'maintenances',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Programmed by`
-  String get programmedBy {
-    return Intl.message(
-      'Programmed by',
-      name: 'programmedBy',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Major Interruptions`
-  String get majorInterruptions {
-    return Intl.message(
-      'Major Interruptions',
-      name: 'majorInterruptions',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Instance Interruptions`
-  String get instanceInterruptions {
-    return Intl.message(
-      'Instance Interruptions',
-      name: 'instanceInterruptions',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Welcome to`
-  String get welcomeTo {
-    return Intl.message(
-      'Welcome to',
-      name: 'welcomeTo',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Exit`
-  String get exit {
-    return Intl.message(
-      'Exit',
-      name: 'exit',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `The`
-  String get the {
-    return Intl.message(
-      'The',
-      name: 'the',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `tool`
-  String get tool {
-    return Intl.message(
-      'tool',
-      name: 'tool',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `system`
-  String get system {
-    return Intl.message(
-      'system',
-      name: 'system',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `you needed to know everything about the`
-  String get welcomeText1 {
-    return Intl.message(
-      'you needed to know everything about the',
-      name: 'welcomeText1',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Here you can check service status from your pocket`
-  String get checkServiceStatus {
-    return Intl.message(
-      'Here you can check service status from your pocket',
-      name: 'checkServiceStatus',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Get full information of major outages, interruptions and maintenances of the system, all in the same place`
-  String get knowOverviewText {
-    return Intl.message(
-      'Get full information of major outages, interruptions and maintenances of the system, all in the same place',
-      name: 'knowOverviewText',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Get notified every time an outage has taken place, a maintenance is programmed or any status has changed!`
-  String get receiveNotifications {
-    return Intl.message(
-      'Get notified every time an outage has taken place, a maintenance is programmed or any status has changed!',
-      name: 'receiveNotifications',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Generate reports from your phone 📱, let everyone know something has happened right away!`
-  String get generateReports {
-    return Intl.message(
-      'Generate reports from your phone 📱, let everyone know something has happened right away!',
-      name: 'generateReports',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Filter by`
-  String get filter {
-    return Intl.message(
-      'Filter by',
-      name: 'filter',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `{count, plural, one {1 Day ago} other {{count} Days ago}}`
-  String daysAgo(num count) {
-    return Intl.plural(
-      count,
-      one: '1 Day ago',
-      other: '$count Days ago',
-      name: 'daysAgo',
-      desc: 'Days ago text',
-      args: [count],
-    );
-  }
-
-  /// `Remove Tag filter`
-  String get removeTagFilters {
-    return Intl.message(
-      'Remove Tag filter',
-      name: 'removeTagFilters',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `*Tap to remove tag`
-  String get tapToRemoveTag {
-    return Intl.message(
-      '*Tap to remove tag',
-      name: 'tapToRemoveTag',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Instance`
-  String get instance {
-    return Intl.message(
-      'Instance',
-      name: 'instance',
       desc: '',
       args: [],
     );
