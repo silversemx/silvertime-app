@@ -1,4 +1,4 @@
-package com.example.silvertime
+package mx.silverse.silvertime
 
 import io.flutter.embedding.android.FlutterActivity
 

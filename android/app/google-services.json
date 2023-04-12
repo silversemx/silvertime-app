@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1013695144952",
+    "project_id": "silvertime-488dd",
+    "storage_bucket": "silvertime-488dd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1013695144952:android:8d6172a2b89a431ad4ac0d",
+        "android_client_info": {
+          "package_name": "mx.silverse.silvertime"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1013695144952-i1rnulo047hd00e7l7mepjkrfilf3u3u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDa9UnmVBMy2X-Q0hPCYeVvTbBUyLZkfc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1013695144952-i1rnulo047hd00e7l7mepjkrfilf3u3u.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1013695144952-6mil753793prf60hkt69pv5go60rji75.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "mx.silverse.silvertime"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
