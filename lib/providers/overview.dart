@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:http_request_utils/body_utils.dart';
 import 'package:silvertime/include.dart';
-import 'package:silvertime/models/overview.dart';
+import 'package:silvertime/models/overview/overview.dart';
 import 'package:silvertime/providers/auth.dart';
 
 class Overviews extends AuthProvider {
