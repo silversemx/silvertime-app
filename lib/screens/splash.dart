@@ -1,5 +1,6 @@
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:silvertime/include.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -82,12 +83,14 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
         setState(() {
           _loading = true;
         });
-        // TODO: Make some requests
         setState(() {
           _loading = false;
         });
-
-        Navigator.of (context).pushReplacementNamed("/home");
+        Navigator.of (context).pushReplacementNamed("/first-time");
+        if (locator<SharedPreferences> ().getBool("first_time") ?? true) {
+        } else {
+          Navigator.of (context).pushReplacementNamed("/home");
+        }
       }
     });
   }
@@ -205,7 +208,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
                             "silvertime",
                               style: Theme.of(context).textTheme.merge (
                                 GoogleFonts.ralewayTextTheme()
-                              ).headline1!.copyWith(
+                              ).displayLarge!.copyWith(
                                 color: UIColors.primary
                               ),
                           ),
@@ -214,13 +217,13 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
                             textAlign: TextAlign.center,
                             text: TextSpan (
                               text: "powered by\n",
-                              style: Theme.of(context).textTheme.bodyText2,
+                              style: Theme.of(context).textTheme.bodyMedium,
                               children: [
                                 TextSpan(
                                   text: "silverse",
                                   style: Theme.of(context).textTheme.merge (
                                     GoogleFonts.ralewayTextTheme()
-                                  ).headline2
+                                  ).displayMedium
                                 )
                               ]
                             ),
