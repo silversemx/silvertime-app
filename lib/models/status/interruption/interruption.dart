@@ -77,7 +77,10 @@ class Interruption {
       )!,
       service: jsonField<String> (json, ["service", "_id", "\$oid"]),
       serviceName: jsonField<String> (json, ["service", "name",]),
-      instance: jsonField<String> (json, ["service_instance", "_id", "\$oid"]),
+      instance: jsonField<String> (
+        json, ["service_instance", "_id", "\$oid"],
+        defaultValue: jsonField<String> (json, ["service_instance", "\$oid"]),
+      ),
       instanceName: jsonField<String> (json, ["service_instance", "name",]),
       end: dateTimefromMillisecondsNoZero(
         jsonField<int> (json, ["date", "\$date"]),
