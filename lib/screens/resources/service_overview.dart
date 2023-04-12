@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:silvertime/include.dart';
 import 'package:silvertime/models/overview/overview.dart';
 import 'package:silvertime/models/resources/service/service.dart';
+import 'package:silvertime/models/resources/service/service_instance.dart';
 import 'package:silvertime/models/status/interruption/interruption.dart';
 import 'package:silvertime/models/status/maintenance/maintenance.dart';
 import 'package:silvertime/models/user/user.dart';
@@ -16,9 +17,11 @@ import 'package:silvertime/widgets/quill/quill_reader.dart';
 class ServiceOverviewScreen extends StatefulWidget {
   final OverviewData data;
   final Service service;
+  final List<ServiceInstance> instances;
   const ServiceOverviewScreen({
     super.key, 
     required this.service,
+    required this.instances,
     required this.data
   });
   static const String routeName = "/service/overview";
@@ -142,12 +145,29 @@ class _ServiceOverviewScreenState extends State<ServiceOverviewScreen> {
     );
   }
 
-  Widget _interruption (Interruption interruption) {
+  Widget _instanceData (ServiceInstance instance) {
+    return Column (
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text (
+          "${S.of(context).instance}: ${instance.name}",
+          style: Theme.of(context).textTheme.displaySmall,
+        )
+      ],
+    );
+  }
+
+  Widget _interruption (Interruption interruption, [ServiceInstance? instance]) {
     return Column (
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _interruptionRange(interruption),
+        instance != null
+        ? _instanceData (instance)
+        : Container (),
+        const SizedBox(height: 16),
+        _interruptionRange (interruption),
         const SizedBox(height: 16),
         InkWell(
           onTap: () {
@@ -414,7 +434,7 @@ class _ServiceOverviewScreenState extends State<ServiceOverviewScreen> {
                             style: Theme.of(context).textTheme.headlineMedium,
                           ),
                           const SizedBox(height: 16),
-                          Visibility(
+                          Visibility (
                             visible: 
                               widget.data.instances.isEmpty,
                             child: Text (
@@ -440,7 +460,11 @@ class _ServiceOverviewScreenState extends State<ServiceOverviewScreen> {
                         );
                       }
                       Interruption interruption = instances [i];
-                      return _interruption(interruption);
+                      return _interruption(
+                        interruption, widget.instances.firstWhereOrNull(
+                          (instance) => instance.id == interruption.instance
+                        )
+                      );
                     },
                   );
                 }
