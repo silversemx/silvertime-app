@@ -280,7 +280,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
     );
   }
 
-  Widget _filters () {
+  Widget _overviewFilter () {
     return CustomDropdownFormField<OverviewFilter>(
       value: filter,
       items: OverviewFilter.values, 
@@ -294,6 +294,8 @@ class _ServicesScreenState extends State<ServicesScreen> {
       validation: false,
     );
   }
+
+ 
 
   Widget _tag (ServiceTag tag) {
     return InkWell(
@@ -429,6 +431,28 @@ class _ServicesScreenState extends State<ServicesScreen> {
     );
   }
 
+   Widget _filters () {
+    return Theme(
+      data: Theme.of(context).copyWith(
+        dividerColor: Colors.transparent
+      ),
+      child: ExpansionTile(
+        title: Text (
+          S.of (context).filters,
+          style: Theme.of(context).textTheme.displaySmall,
+        ),
+        childrenPadding: EdgeInsets.zero,
+        children: [
+          const SizedBox(height: 16),
+          _overviewFilter(),
+          const SizedBox(height: 16),
+          _tagsFilter(),
+          const SizedBox(height: 16),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -439,8 +463,6 @@ class _ServicesScreenState extends State<ServicesScreen> {
         const SizedBox(height: 16),
         _limitPicker (),
         _filters (),
-        const SizedBox(height: 16),
-        _tagsFilter (),
         const SizedBox(height: 16),
         _services (),
       ],
