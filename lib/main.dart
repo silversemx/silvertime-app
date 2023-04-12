@@ -50,6 +50,9 @@ class _SilverTimeState extends State<SilverTime> {
     return MultiProvider(
       providers: [
         ...mainProviders,
+        ...overviewProviders,
+        ...resourceProviders,
+        ...statusProviders
       ],
       child: Consumer<UI>(
         builder: (context, ui, _) {
