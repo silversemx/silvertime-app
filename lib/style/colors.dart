@@ -11,7 +11,11 @@ class UIColors {
 
   static const Color hint = Color.fromARGB(105, 52, 71, 92);
   
-  static const Color error = Color.fromRGBO(255, 54, 54, 1.0);
+  static const Color error = Color (0XFFef4b4c);
 
-  static const Color inputSuccess = Color.fromARGB(255, 15, 154, 0);
+  static const Color warning = Color (0xFFf7d54a);
+
+  static const Color inputSuccess = Color (0xFF06c281);
+
+  static const Color maintenance = Color (0xFF479be5);
 }
