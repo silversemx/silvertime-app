@@ -49,7 +49,7 @@ class _BottomBarState extends State<BottomBar> {
       vertical: 8 
     ),
     decoration: BoxDecoration (
-      color: Theme.of(context).backgroundColor,
+      color: Theme.of(context).colorScheme.background,
       borderRadius: BorderRadius.circular(72)
     ),
     child: Row (
@@ -65,6 +65,11 @@ class _BottomBarState extends State<BottomBar> {
           icon: Icons.notifications_outlined,
           selectedIcon: Icons.notifications_sharp,
           route: "/notifications"
+        ),
+        _button (
+          icon: Icons.person_outline,
+          selectedIcon: Icons.person_sharp,
+          route: "/account"
         )
       ],
     ),
