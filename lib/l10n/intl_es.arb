@@ -241,5 +241,26 @@
     "exit": "Salida",
     "solution": "Solución",
     "maintenances": "Mantenimientos",
-    "programmedBy": "Programada por"
+    "programmedBy": "Programada por",
+    "majorInterruptions": "Interrupciones mayores",
+    "instanceInterruptions": "Instance Interruptions",
+    "welcomeTo": "¡Bienvenido a",
+    "the": "La",
+    "tool": "herramienta",
+    "system": "sistema",
+    "welcomeText1": "tú necesitabas para saber todo sobre el",
+    "knowOverviewText": "Obten información completa de caídas, interrupciones y mantenimientos, todo en un mismo lugar",
+    "receiveNotifications": "¡Recibe notificaciones cada que una caída haya ocurrido, un mantenimiento haya sido programado o un servicio haya cambiado de status!",
+    "generateReports": "¡Genera reportes desde tu celular 📱, haz saber a todos que algo ha ocurrido de manera inmediata!",
+    "filter": "Filtrar por",
+    "daysAgo": "{count, plural, one {Hace 1 día} other {Hace {count} días}}",
+    "@daysAgo": {
+        "description": "Days ago text",
+        "placeholderrs": {
+            "count": {
+                "type": "int",
+                "default": 1
+            }
+        }
+    }
 }

@@ -261,5 +261,27 @@
     "solution": "Solution",
     "maintenances": "Maintenances",
     "programmedBy": "Programmed by",
-    "exit": "Exit"
+    "majorInterruptions": "Major Interruptions",
+    "instanceInterruptions": "Instance Interruptions",
+    "welcomeTo": "Welcome to",
+    "exit": "Exit",
+    "the": "The",
+    "tool": "tool",
+    "system": "system",
+    "welcomeText1": "you needed to know everything about the",
+    "checkServiceStatus": "Here you can check service status from your pocket",
+    "knowOverviewText": "Get full information of major outages, interruptions and maintenances of the system, all in the same place",
+    "receiveNotifications": "Get notified every time an outage has taken place, a maintenance is programmed or any status has changed!",
+    "generateReports": "Generate reports from your phone 📱, let everyone know something has happened right away!",
+    "filter": "Filter by",
+    "daysAgo": "{count, plural, one {1 Day ago} other {{count} Days ago}}",
+    "@daysAgo": {
+        "description": "Days ago text",
+        "placeholderrs": {
+            "count": {
+                "type": "int",
+                "default": 1
+            }
+        }
+    }
 }

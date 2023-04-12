@@ -20,9 +20,12 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'es';
 
-  static String m0(selected) => "Eliminar seleccionado(s): ${selected}";
+  static String m0(count) =>
+      "${Intl.plural(count, one: 'Hace 1 día', other: 'Hace ${count} días')}";
 
-  static String m1(name) => "¡Hola de nuevo!";
+  static String m1(selected) => "Eliminar seleccionado(s): ${selected}";
+
+  static String m2(name) => "¡Hola de nuevo!";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -53,7 +56,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "dailyAccess":
             MessageLookupByLibrary.simpleMessage("Acesso Diario Promedio"),
         "days": MessageLookupByLibrary.simpleMessage("Días"),
-        "deleteSelected": m0,
+        "daysAgo": m0,
+        "deleteSelected": m1,
         "deletingDisks":
             MessageLookupByLibrary.simpleMessage("Eliminando Discos"),
         "deletingMachines":
@@ -125,7 +129,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "executionType_other": MessageLookupByLibrary.simpleMessage("Otro"),
         "executionType_test": MessageLookupByLibrary.simpleMessage("Pruebas"),
         "exit": MessageLookupByLibrary.simpleMessage("Salida"),
+        "filter": MessageLookupByLibrary.simpleMessage("Filtrar por"),
         "format": MessageLookupByLibrary.simpleMessage("Formato"),
+        "generateReports": MessageLookupByLibrary.simpleMessage(
+            "¡Genera reportes desde tu celular 📱, haz saber a todos que algo ha ocurrido de manera inmediata!"),
         "history": MessageLookupByLibrary.simpleMessage("Historial"),
         "home": MessageLookupByLibrary.simpleMessage("inicio"),
         "hour": MessageLookupByLibrary.simpleMessage("Hora"),
@@ -135,9 +142,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("En la autorización"),
         "inDashboard": MessageLookupByLibrary.simpleMessage("en el Dashboard"),
         "inServer": MessageLookupByLibrary.simpleMessage("en el servidor"),
+        "instanceInterruptions":
+            MessageLookupByLibrary.simpleMessage("Instance Interruptions"),
         "interruptions": MessageLookupByLibrary.simpleMessage("Interrupciones"),
         "invalid": MessageLookupByLibrary.simpleMessage("Inválido"),
         "invalidEmail": MessageLookupByLibrary.simpleMessage("Email Invalido"),
+        "knowOverviewText": MessageLookupByLibrary.simpleMessage(
+            "Obten información completa de caídas, interrupciones y mantenimientos, todo en un mismo lugar"),
         "legal": MessageLookupByLibrary.simpleMessage("Legal"),
         "limit": MessageLookupByLibrary.simpleMessage("Servicios por página"),
         "login": MessageLookupByLibrary.simpleMessage("Iniciar Sesión"),
@@ -168,6 +179,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "maintenanceTime_other": MessageLookupByLibrary.simpleMessage("Otro"),
         "maintenanceTime_range": MessageLookupByLibrary.simpleMessage("Rango"),
         "maintenances": MessageLookupByLibrary.simpleMessage("Mantenimientos"),
+        "majorInterruptions":
+            MessageLookupByLibrary.simpleMessage("Interrupciones mayores"),
         "minutes": MessageLookupByLibrary.simpleMessage("Minutos"),
         "missingValue": MessageLookupByLibrary.simpleMessage("Campo vacío"),
         "mobile": MessageLookupByLibrary.simpleMessage("Móvil"),
@@ -194,6 +207,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Resumen de plataforma"),
         "programmedBy": MessageLookupByLibrary.simpleMessage("Programada por"),
         "progress": MessageLookupByLibrary.simpleMessage("Progreso"),
+        "receiveNotifications": MessageLookupByLibrary.simpleMessage(
+            "¡Recibe notificaciones cada que una caída haya ocurrido, un mantenimiento haya sido programado o un servicio haya cambiado de status!"),
         "region": MessageLookupByLibrary.simpleMessage("Región"),
         "requiredText": MessageLookupByLibrary.simpleMessage("Requerido"),
         "resourceType_interruptions":
@@ -289,10 +304,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "El almacenamiento fue actualizado correctamente"),
         "storages": MessageLookupByLibrary.simpleMessage("Almacenamientos"),
         "success": MessageLookupByLibrary.simpleMessage("Exito"),
+        "system": MessageLookupByLibrary.simpleMessage("sistema"),
+        "the": MessageLookupByLibrary.simpleMessage("La"),
         "thisActionCantBeUndone": MessageLookupByLibrary.simpleMessage(
             "¡Esta acción no se puede deshacer!"),
         "tier": MessageLookupByLibrary.simpleMessage("Tier"),
         "time": MessageLookupByLibrary.simpleMessage("Tiempo"),
+        "tool": MessageLookupByLibrary.simpleMessage("herramienta"),
         "type": MessageLookupByLibrary.simpleMessage("Tipo"),
         "updateStatus":
             MessageLookupByLibrary.simpleMessage("Actualizar Status"),
@@ -312,9 +330,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "web": MessageLookupByLibrary.simpleMessage("Web"),
         "weeklyAccess":
             MessageLookupByLibrary.simpleMessage("Acceso Semanal Promedio"),
-        "welcomeBack": m1,
+        "welcomeBack": m2,
         "welcomeBackNoName":
             MessageLookupByLibrary.simpleMessage("¡Bienvenido!"),
+        "welcomeText1": MessageLookupByLibrary.simpleMessage(
+            "tú necesitabas para saber todo sobre el"),
+        "welcomeTo": MessageLookupByLibrary.simpleMessage("¡Bienvenido a"),
         "workerInstanceSpeed_background":
             MessageLookupByLibrary.simpleMessage("Background"),
         "workerInstanceSpeed_backup":

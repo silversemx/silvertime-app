@@ -2490,6 +2490,36 @@ class S {
     );
   }
 
+  /// `Major Interruptions`
+  String get majorInterruptions {
+    return Intl.message(
+      'Major Interruptions',
+      name: 'majorInterruptions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Instance Interruptions`
+  String get instanceInterruptions {
+    return Intl.message(
+      'Instance Interruptions',
+      name: 'instanceInterruptions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome to`
+  String get welcomeTo {
+    return Intl.message(
+      'Welcome to',
+      name: 'welcomeTo',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Exit`
   String get exit {
     return Intl.message(
@@ -2497,6 +2527,108 @@ class S {
       name: 'exit',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `The`
+  String get the {
+    return Intl.message(
+      'The',
+      name: 'the',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `tool`
+  String get tool {
+    return Intl.message(
+      'tool',
+      name: 'tool',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `system`
+  String get system {
+    return Intl.message(
+      'system',
+      name: 'system',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `you needed to know everything about the`
+  String get welcomeText1 {
+    return Intl.message(
+      'you needed to know everything about the',
+      name: 'welcomeText1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Here you can check service status from your pocket`
+  String get checkServiceStatus {
+    return Intl.message(
+      'Here you can check service status from your pocket',
+      name: 'checkServiceStatus',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Get full information of major outages, interruptions and maintenances of the system, all in the same place`
+  String get knowOverviewText {
+    return Intl.message(
+      'Get full information of major outages, interruptions and maintenances of the system, all in the same place',
+      name: 'knowOverviewText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Get notified every time an outage has taken place, a maintenance is programmed or any status has changed!`
+  String get receiveNotifications {
+    return Intl.message(
+      'Get notified every time an outage has taken place, a maintenance is programmed or any status has changed!',
+      name: 'receiveNotifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Generate reports from your phone 📱, let everyone know something has happened right away!`
+  String get generateReports {
+    return Intl.message(
+      'Generate reports from your phone 📱, let everyone know something has happened right away!',
+      name: 'generateReports',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filter by`
+  String get filter {
+    return Intl.message(
+      'Filter by',
+      name: 'filter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{count, plural, one {1 Day ago} other {{count} Days ago}}`
+  String daysAgo(num count) {
+    return Intl.plural(
+      count,
+      one: '1 Day ago',
+      other: '$count Days ago',
+      name: 'daysAgo',
+      desc: 'Days ago text',
+      args: [count],
     );
   }
 }
