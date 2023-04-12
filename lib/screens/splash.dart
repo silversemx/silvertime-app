@@ -86,8 +86,8 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
         setState(() {
           _loading = false;
         });
-        Navigator.of (context).pushReplacementNamed("/first-time");
         if (locator<SharedPreferences> ().getBool("first_time") ?? true) {
+          Navigator.of (context).pushReplacementNamed("/first-time");
         } else {
           Navigator.of (context).pushReplacementNamed("/home");
         }
