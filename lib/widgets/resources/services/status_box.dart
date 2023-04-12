@@ -232,6 +232,7 @@ class _StatusBoxWidgetState extends State<StatusBoxWidget> {
                 builder: (ctx) => ServiceOverviewScreen (
                   data: data,
                   service: widget.service,
+                  instances: overview.instances,
                 )
               )
             );
@@ -277,6 +278,54 @@ class _StatusBoxWidgetState extends State<StatusBoxWidget> {
     );
   }
 
+  Widget _daysIndicator () {
+    return SizedBox(
+      width: constrainedBigWidth(
+        context, 
+        (
+          overview.data.length * (unitIndicatorWidth + 13) + (
+            unitIndicatorRightMargin * overview.data.length
+          )
+        ).toDouble(),
+        constraintWidth: 150
+      ),
+      child: Row (
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text (
+            Provider.of<Overviews> (context, listen: false).range.end
+            .equalsIgnoreTime(DateTime.now ())
+            ? S.of(context).daysAgo(overview.data.length)
+            : Provider.of<Overviews> (
+              context, listen: false
+            ).range.start.dateString,
+            style: Theme.of(context).textTheme.bodySmall!.copyWith(
+              color: UIColors.hint
+            ),
+          ),
+          const Expanded(
+            child: Divider (
+              indent: 10,
+              endIndent: 10,
+            )
+          ),
+          Text (
+            Provider.of<Overviews> (context, listen: false).range.end
+            .equalsIgnoreTime(DateTime.now ())
+            ? "Today"
+            : Provider.of<Overviews> (
+              context, listen: false
+            ).range.end.dateString,
+            style: Theme.of(context).textTheme.bodySmall!.copyWith(
+              color: UIColors.hint
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -308,8 +357,12 @@ class _StatusBoxWidgetState extends State<StatusBoxWidget> {
                           borderRadius: BorderRadius.circular(24)
                         ),
                       );
+                    } else if (overview.data.isEmpty){
+                      return Text (
+                        S.of(context).noInformation,
+                        style: Theme.of(context).textTheme.bodyLarge
+                      );
                     } else {
-                      
                       return SizedBox(
                         height: 55,
                         child: Row (
@@ -324,53 +377,9 @@ class _StatusBoxWidgetState extends State<StatusBoxWidget> {
                   }
                 ),
                 const SizedBox(height: 8),
-                _loading
+                _loading || overview.data.isEmpty
                 ? Container ()
-                : SizedBox(
-                  width: constrainedBigWidth(
-                    context, 
-                    (
-                      overview.data.length * (unitIndicatorWidth + 13) + (
-                        unitIndicatorRightMargin * overview.data.length
-                      )
-                    ).toDouble(),
-                    constraintWidth: 150
-                  ),
-                  child: Row (
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text (
-                        Provider.of<Overviews> (context, listen: false).range.end
-                        .equalsIgnoreTime(DateTime.now ())
-                        ? S.of(context).daysAgo(overview.data.length)
-                        : Provider.of<Overviews> (
-                          context, listen: false
-                        ).range.start.dateString,
-                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                          color: UIColors.hint
-                        ),
-                      ),
-                      const Expanded(
-                        child: Divider (
-                          indent: 10,
-                          endIndent: 10,
-                        )
-                      ),
-                      Text (
-                        Provider.of<Overviews> (context, listen: false).range.end
-                        .equalsIgnoreTime(DateTime.now ())
-                        ? "Today"
-                        : Provider.of<Overviews> (
-                          context, listen: false
-                        ).range.end.dateString,
-                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                          color: UIColors.hint
-                        ),
-                      )
-                    ],
-                  ),
-                )
+                : _daysIndicator()
               ],
             ),
           ),
