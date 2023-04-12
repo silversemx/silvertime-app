@@ -2409,6 +2409,96 @@ class S {
       args: [],
     );
   }
+
+  /// `Current Range`
+  String get currentRange {
+    return Intl.message(
+      'Current Range',
+      name: 'currentRange',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change`
+  String get change {
+    return Intl.message(
+      'Change',
+      name: 'change',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Services per Page`
+  String get limit {
+    return Intl.message(
+      'Services per Page',
+      name: 'limit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Days`
+  String get days {
+    return Intl.message(
+      'Days',
+      name: 'days',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Execution`
+  String get execution {
+    return Intl.message(
+      'Execution',
+      name: 'execution',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Solution`
+  String get solution {
+    return Intl.message(
+      'Solution',
+      name: 'solution',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Maintenances`
+  String get maintenances {
+    return Intl.message(
+      'Maintenances',
+      name: 'maintenances',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Programmed by`
+  String get programmedBy {
+    return Intl.message(
+      'Programmed by',
+      name: 'programmedBy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Exit`
+  String get exit {
+    return Intl.message(
+      'Exit',
+      name: 'exit',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

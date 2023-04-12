@@ -37,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Un error ha ocurrido"),
         "areYouSure": MessageLookupByLibrary.simpleMessage("¿Estás seguro?"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancelar"),
+        "change": MessageLookupByLibrary.simpleMessage("Cambiar"),
         "clearSelection":
             MessageLookupByLibrary.simpleMessage("Limpiar selección"),
         "cookiesAdvice":
@@ -48,8 +49,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "createNetwork": MessageLookupByLibrary.simpleMessage("Crear Red"),
         "createService": MessageLookupByLibrary.simpleMessage("Crear Servicio"),
         "createUser": MessageLookupByLibrary.simpleMessage("Crear Usuario"),
+        "currentRange": MessageLookupByLibrary.simpleMessage("Rango Actual"),
         "dailyAccess":
             MessageLookupByLibrary.simpleMessage("Acesso Diario Promedio"),
+        "days": MessageLookupByLibrary.simpleMessage("Días"),
         "deleteSelected": m0,
         "deletingDisks":
             MessageLookupByLibrary.simpleMessage("Eliminando Discos"),
@@ -101,6 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "El servidor se encuentra caido o no responde, reintenta en unos minutos"),
         "error_504": MessageLookupByLibrary.simpleMessage(
             "El tiempo de espera se ha sobrepasado, revisa tu conexión de internet"),
+        "execution": MessageLookupByLibrary.simpleMessage("Ejecución"),
         "executionExit_error": MessageLookupByLibrary.simpleMessage("Error"),
         "executionExit_interruption":
             MessageLookupByLibrary.simpleMessage("Interrupción"),
@@ -120,6 +124,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "executionType_none": MessageLookupByLibrary.simpleMessage("Ninguno"),
         "executionType_other": MessageLookupByLibrary.simpleMessage("Otro"),
         "executionType_test": MessageLookupByLibrary.simpleMessage("Pruebas"),
+        "exit": MessageLookupByLibrary.simpleMessage("Salida"),
         "format": MessageLookupByLibrary.simpleMessage("Formato"),
         "history": MessageLookupByLibrary.simpleMessage("Historial"),
         "home": MessageLookupByLibrary.simpleMessage("inicio"),
@@ -134,6 +139,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "invalid": MessageLookupByLibrary.simpleMessage("Inválido"),
         "invalidEmail": MessageLookupByLibrary.simpleMessage("Email Invalido"),
         "legal": MessageLookupByLibrary.simpleMessage("Legal"),
+        "limit": MessageLookupByLibrary.simpleMessage("Servicios por página"),
         "login": MessageLookupByLibrary.simpleMessage("Iniciar Sesión"),
         "machine": MessageLookupByLibrary.simpleMessage("Instancia"),
         "machineConfigurationUpdatedSuccessfully":
@@ -161,6 +167,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "maintenanceTime_none": MessageLookupByLibrary.simpleMessage("Ninguno"),
         "maintenanceTime_other": MessageLookupByLibrary.simpleMessage("Otro"),
         "maintenanceTime_range": MessageLookupByLibrary.simpleMessage("Rango"),
+        "maintenances": MessageLookupByLibrary.simpleMessage("Mantenimientos"),
         "minutes": MessageLookupByLibrary.simpleMessage("Minutos"),
         "missingValue": MessageLookupByLibrary.simpleMessage("Campo vacío"),
         "mobile": MessageLookupByLibrary.simpleMessage("Móvil"),
@@ -185,6 +192,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "path": MessageLookupByLibrary.simpleMessage("Path"),
         "platformOverview":
             MessageLookupByLibrary.simpleMessage("Resumen de plataforma"),
+        "programmedBy": MessageLookupByLibrary.simpleMessage("Programada por"),
         "progress": MessageLookupByLibrary.simpleMessage("Progreso"),
         "region": MessageLookupByLibrary.simpleMessage("Región"),
         "requiredText": MessageLookupByLibrary.simpleMessage("Requerido"),
@@ -226,6 +234,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Etiquetas de servicios"),
         "services": MessageLookupByLibrary.simpleMessage("Servicios"),
         "size": MessageLookupByLibrary.simpleMessage("Tamaño"),
+        "solution": MessageLookupByLibrary.simpleMessage("Solución"),
         "start": MessageLookupByLibrary.simpleMessage("Inicio"),
         "status": MessageLookupByLibrary.simpleMessage("Status"),
         "status_active": MessageLookupByLibrary.simpleMessage("Activo"),

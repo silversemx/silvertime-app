@@ -232,5 +232,14 @@
     "resourceType_maintenance": "Mantenimientos",
     "resourceType_interruptions": "Interrupciones",
     "resourceType_reports": "Reportes",
-    "view": "Vista"
+    "view": "Vista",
+    "currentRange": "Rango Actual",
+    "change": "Cambiar",
+    "limit": "Servicios por página",
+    "days": "Días",
+    "execution": "Ejecución",
+    "exit": "Salida",
+    "solution": "Solución",
+    "maintenances": "Mantenimientos",
+    "programmedBy": "Programada por"
 }

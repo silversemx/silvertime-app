@@ -36,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("An error ocurred"),
         "areYouSure": MessageLookupByLibrary.simpleMessage("Are you sure?"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "change": MessageLookupByLibrary.simpleMessage("Change"),
         "clearSelection":
             MessageLookupByLibrary.simpleMessage("Clear selection"),
         "cookiesAdvice":
@@ -50,8 +51,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "createServiceTag":
             MessageLookupByLibrary.simpleMessage("Create Service Tag"),
         "createUser": MessageLookupByLibrary.simpleMessage("Create User"),
+        "currentRange": MessageLookupByLibrary.simpleMessage("Current Range"),
         "dailyAccess":
             MessageLookupByLibrary.simpleMessage("Average Daily Access"),
+        "days": MessageLookupByLibrary.simpleMessage("Days"),
         "deleteSelected": m0,
         "deletingDisks": MessageLookupByLibrary.simpleMessage("Deleting disks"),
         "deletingMachines":
@@ -105,6 +108,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Server is down or not responding, wait a few minutes"),
         "error_504": MessageLookupByLibrary.simpleMessage(
             "Timeout reached, check your internet connection"),
+        "execution": MessageLookupByLibrary.simpleMessage("Execution"),
         "executionExit_error": MessageLookupByLibrary.simpleMessage("Error"),
         "executionExit_interruption":
             MessageLookupByLibrary.simpleMessage("Interruption"),
@@ -125,6 +129,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "executionType_none": MessageLookupByLibrary.simpleMessage("None"),
         "executionType_other": MessageLookupByLibrary.simpleMessage("Other"),
         "executionType_test": MessageLookupByLibrary.simpleMessage("Test"),
+        "exit": MessageLookupByLibrary.simpleMessage("Exit"),
         "format": MessageLookupByLibrary.simpleMessage("Format"),
         "history": MessageLookupByLibrary.simpleMessage("History"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
@@ -138,6 +143,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "invalid": MessageLookupByLibrary.simpleMessage("Invalid"),
         "invalidEmail": MessageLookupByLibrary.simpleMessage("Invalid Email"),
         "legal": MessageLookupByLibrary.simpleMessage("Legal"),
+        "limit": MessageLookupByLibrary.simpleMessage("Services per Page"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "machine": MessageLookupByLibrary.simpleMessage("Machine"),
         "machineConfigurationUpdatedSuccessfully":
@@ -164,6 +170,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "maintenanceTime_none": MessageLookupByLibrary.simpleMessage("None"),
         "maintenanceTime_other": MessageLookupByLibrary.simpleMessage("Other"),
         "maintenanceTime_range": MessageLookupByLibrary.simpleMessage("Range"),
+        "maintenances": MessageLookupByLibrary.simpleMessage("Maintenances"),
         "minutes": MessageLookupByLibrary.simpleMessage("Minutes"),
         "missingValue": MessageLookupByLibrary.simpleMessage("Missing value"),
         "mobile": MessageLookupByLibrary.simpleMessage("Mobile"),
@@ -192,6 +199,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "path": MessageLookupByLibrary.simpleMessage("Path"),
         "platformOverview":
             MessageLookupByLibrary.simpleMessage("Platform overview"),
+        "programmedBy": MessageLookupByLibrary.simpleMessage("Programmed by"),
         "progress": MessageLookupByLibrary.simpleMessage("Progress"),
         "region": MessageLookupByLibrary.simpleMessage("Region"),
         "requiredText": MessageLookupByLibrary.simpleMessage("Required"),
@@ -236,6 +244,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "serviceType_web": MessageLookupByLibrary.simpleMessage("Web"),
         "services": MessageLookupByLibrary.simpleMessage("Services"),
         "size": MessageLookupByLibrary.simpleMessage("Size"),
+        "solution": MessageLookupByLibrary.simpleMessage("Solution"),
         "start": MessageLookupByLibrary.simpleMessage("Start"),
         "status": MessageLookupByLibrary.simpleMessage("Status"),
         "status_active": MessageLookupByLibrary.simpleMessage("Active"),
