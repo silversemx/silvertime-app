@@ -27,6 +27,23 @@ extension InterruptionStatusExt on InterruptionStatus {
     }
   }
 
+  String get emoji {
+    switch (this) {
+      case InterruptionStatus.none:
+        return "";
+      case InterruptionStatus.detected:
+        return "👀";
+      case InterruptionStatus.investigating:
+        return "🔍";
+      case InterruptionStatus.monitoring:
+        return "💻";
+      case InterruptionStatus.solved:
+        return "🎉";
+      case InterruptionStatus.removed:
+        return "";
+    }
+  }
+
   Color get color {
     switch (this) {
       case InterruptionStatus.none:
@@ -48,6 +65,9 @@ extension InterruptionStatusExt on InterruptionStatus {
 
   Widget widget (BuildContext context) {
     return Container (
+      constraints: const BoxConstraints (
+        minWidth: 110
+      ),
       decoration: BoxDecoration (
         borderRadius: BorderRadius.circular(20),
         color: color,
@@ -60,13 +80,23 @@ extension InterruptionStatusExt on InterruptionStatus {
           )
         ]
       ),
-      padding: const EdgeInsets.all(4),
-      child: Text (
-        name (context),
-        style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-          color: getColorContrast(color)
+      padding: const EdgeInsets.all(8),
+      child: RichText (
+        text: TextSpan (
+          text: "${name (context)}\n",
+          style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+            color: getColorContrast(color)
+          ),
+          children: [
+            TextSpan (
+              text: emoji,
+              style: Theme.of(context).textTheme.headlineSmall
+            )
+          ]
         ),
-      ),
+        maxLines: 2,
+        textAlign: TextAlign.center,
+      )
     );
   }
 
