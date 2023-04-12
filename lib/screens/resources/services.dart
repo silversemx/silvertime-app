@@ -1,10 +1,14 @@
 import 'package:http_request_utils/models/http_exception.dart';
 import 'package:provider/provider.dart';
+import 'package:searchfield/searchfield.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:silvertime/include.dart';
 import 'package:silvertime/models/overview/overview_types.dart';
+import 'package:silvertime/models/resources/service/service.dart';
+import 'package:silvertime/models/resources/service/service_tag.dart';
 import 'package:silvertime/providers/overview.dart';
-import 'package:silvertime/providers/services.dart';
+import 'package:silvertime/providers/resources/services/services.dart';
+import 'package:silvertime/providers/resources/services/tags.dart';
 import 'package:silvertime/style/container.dart';
 import 'package:silvertime/widgets/in_app_messages/date_range_picker_dialog.dart';
 import 'package:silvertime/widgets/in_app_messages/error_dialog.dart';
@@ -29,6 +33,8 @@ class _ServicesScreenState extends State<ServicesScreen> {
   int _currentPage = 0;
   int _limit = 5;
   OverviewFilter filter = OverviewFilter.none;
+  int tagsMask = 0;
+  
 
   int get limit => _limit;
 
@@ -77,6 +83,9 @@ class _ServicesScreenState extends State<ServicesScreen> {
     });
     try {
       await _fetchServices(showError: false);
+      await Provider.of<ServiceTags> (context, listen: false).getServiceTags(
+        limit: 0
+      );
     } on HttpException catch(error) {
       showErrorDialog(context, exception: error);
     } finally {
@@ -147,36 +156,42 @@ class _ServicesScreenState extends State<ServicesScreen> {
       builder: (context, services, _) {
         if (_loading) {
           return _loadingServices();
-        } else if (services.services.isEmpty) {
-          return ConstrainedBox (
-            constraints: BoxConstraints (
-              minHeight: MediaQuery.of(context).size.height * 0.7
-            ),
-            child: Center(
-              child: Text (
-                S.of(context).noInformation,
-                style: Theme.of(context).textTheme.headlineMedium,
+        } else  {
+          List<Service> currentServices = services.services.where (
+            (service) => service.containsTag(tagsMask) || tagsMask == 0
+          ).toList();
+
+          if (currentServices.isEmpty) {
+            return ConstrainedBox (
+              constraints: BoxConstraints (
+                minHeight: MediaQuery.of(context).size.height * 0.7
               ),
-            ),
-          );
-        } else {
-          return ListView.builder (
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: services.services.length + 1,
-            itemBuilder: (ctx, i) {
-              if (i == services.services.length) {
-                return const SizedBox (
-                  height: 72,
+              child: Center(
+                child: Text (
+                  S.of(context).noInformation,
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
+              ),
+            );
+          } else {
+            return ListView.builder (
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: currentServices.length + 1,
+              itemBuilder: (ctx, i) {
+                if (i == currentServices.length) {
+                  return const SizedBox (
+                    height: 72,
+                  );
+                }
+                return StatusBoxWidget(
+                  key: ValueKey (filter),
+                  service: currentServices[i],
+                  filter: filter,
                 );
-              }
-              return StatusBoxWidget(
-                key: ValueKey (filter),
-                service: services.services[i],
-                filter: filter,
-              );
-            },
-          );
+              },
+            );
+          }
         }
       }
     );
@@ -280,6 +295,140 @@ class _ServicesScreenState extends State<ServicesScreen> {
     );
   }
 
+  Widget _tag (ServiceTag tag) {
+    return InkWell(
+      onTap: () {
+        tagsMask = tagsMask ^ tag.value;
+
+        setState(() {});
+      },
+      child: Container (
+        decoration: containerDecoration.copyWith(
+          color: UIColors.primary
+        ),
+        padding: const EdgeInsets.all(8),
+        child: Text (
+          tag.name,
+          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+            color: UIColors.white
+          ),
+        ),
+      ),
+    );
+  }
+
+ Widget _tagsFilter () {
+    return Consumer<ServiceTags>(
+      builder: (context, tags, _) {
+        if (_loading) {
+          return SkeletonAvatar (
+            style: SkeletonAvatarStyle (
+              borderRadius: BorderRadius.circular(20),
+              height: 52,
+              width: double.infinity
+            ),
+          );
+        } else if (tags.tags.isEmpty) {
+          return Container();
+        }
+        return Container(
+          decoration: containerDecoration,
+          padding: const EdgeInsets.all(8),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomInputSearchField<ServiceTag>  (
+                color: Theme.of(context).scaffoldBackgroundColor,
+                label: S.of(context).serviceTags,
+                fetchAfterSubmission: true,
+                fetch: (String? text) async {
+                  return tags.tags.where (
+                    (tag) => (
+                      (text?.isEmpty ?? true) ||
+                      tag.name.formattedSearchText.contains(
+                        text?.formattedSearchText ?? ""
+                      ) 
+                    ) && !tagsFromMask(tagsMask, tags.tags).contains (
+                      tag
+                    )
+                  
+                  ).toList();
+                },
+                onSuggestionTap: (suggestion) {
+                  setState(() {
+                    tagsMask = tagsMask | suggestion.value;
+                  });
+                },
+                onSubmit: (text) async {
+                  ServiceTag? tag = tags.tags.firstWhereOrNull(
+                    (element) => element.name.formattedSearchText.contains(
+                      text.formattedSearchText
+                    )
+                  );
+        
+                  if (tag != null) {
+                    setState(() {
+                      tagsMask = tagsMask | tag.value;
+                    });
+                    
+                    return tag.name;
+                  }
+        
+                  return null;
+                },
+                searchFieldMap: (tag) => SearchFieldListItem(
+                  tag.name,
+                  item: tag
+                ),
+                clearSelection: () {},
+              ),
+              Text (
+                S.of (context).tapToRemoveTag,
+                style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                  color: UIColors.hint
+                ),
+              ),
+              const SizedBox(height: 8),
+              Container (
+                width: double.infinity,
+                constraints: BoxConstraints (
+                  maxHeight: MediaQuery.of(context).size.height * 0.2,
+                ),
+                child: SingleChildScrollView (
+                  child: Wrap (
+                    alignment: WrapAlignment.spaceEvenly,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: tagsFromMask(
+                      tagsMask, tags.tags
+                    ).map<Widget> (
+                      (tag) => _tag (tag)
+                    ).toList(),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 8),
+              TextButton (
+                child: Text (
+                  S.of (context).removeTagFilters,
+                  style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                    color: Theme.of(context).primaryColor,
+                    decoration: TextDecoration.underline
+                  ),
+                ),
+                onPressed: () {
+                  setState(() {
+                    tagsMask = 0;
+                  });
+                },
+              ),
+            ],
+          ),
+        );
+      }
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -290,6 +439,8 @@ class _ServicesScreenState extends State<ServicesScreen> {
         const SizedBox(height: 16),
         _limitPicker (),
         _filters (),
+        const SizedBox(height: 16),
+        _tagsFilter (),
         const SizedBox(height: 16),
         _services (),
       ],
