@@ -2,10 +2,12 @@ import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:silvertime/providers/auth.dart';
 import 'package:silvertime/providers/overview.dart';
+import 'package:silvertime/providers/resources/services/instances.dart';
 import 'package:silvertime/providers/resources/services/services.dart';
 import 'package:silvertime/providers/resources/services/tags.dart';
 import 'package:silvertime/providers/status/interruptions.dart';
 import 'package:silvertime/providers/status/maintenances.dart';
+import 'package:silvertime/providers/status/reports.dart';
 import 'package:silvertime/providers/ui.dart';
 import 'package:silvertime/providers/users.dart';
 
@@ -26,6 +28,10 @@ final List<SingleChildWidget> resourceProviders = [
   ChangeNotifierProxyProvider<Auth, Services>(
     create: (ctx) => Services (), 
     update: (ctx, auth, services) => services!..update (auth)
+  ),
+  ChangeNotifierProxyProvider2<Auth, Services, ServiceInstances>(
+    create: (ctx) => ServiceInstances (), 
+    update: (ctx, auth, services, instances) => instances!..update (auth)
   ),
   ChangeNotifierProxyProvider2<Auth, Services, ServiceTags>(
     create: (ctx) => ServiceTags (), 
@@ -48,5 +54,9 @@ final List<SingleChildWidget> statusProviders = [
   ChangeNotifierProxyProvider<Auth, Maintenances>(
     create: (ctx) => Maintenances (), 
     update: (ctx, auth, maintenances) => maintenances!..update (auth)
+  ),
+  ChangeNotifierProxyProvider<Auth, Reports>(
+    create: (ctx) => Reports (), 
+    update: (ctx, auth, reports) => reports!..update (auth)
   )
 ];
