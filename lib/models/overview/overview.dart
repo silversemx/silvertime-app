@@ -17,6 +17,8 @@ class OverviewData {
     required this.instances
   });
 
+  OverviewData.empty ();
+
   Color get color {
     if (interruptions.isNotEmpty) {
       return UIColors.error;
@@ -50,7 +52,7 @@ class OverviewData {
 }
 
 class Overview {
-  late Service service;
+  Service service = Service.empty ();
   List<ServiceInstance> instances = [];
   List<OverviewData> data = [];
   
@@ -59,6 +61,8 @@ class Overview {
     required this.instances,
     required this.data
   });
+
+  Overview.empty ();
 
   factory Overview.fromJson (dynamic json) {
     return Overview (
