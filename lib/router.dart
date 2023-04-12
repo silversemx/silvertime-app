@@ -7,7 +7,9 @@ import 'package:provider/provider.dart';
 import 'package:silvertime/include.dart';
 import 'package:silvertime/providers/auth.dart';
 import 'package:silvertime/providers/ui.dart';
+import 'package:silvertime/screens/account.dart';
 import 'package:silvertime/screens/auth/login.dart';
+import 'package:silvertime/screens/first_time.dart';
 import 'package:silvertime/screens/home.dart';
 import 'package:silvertime/screens/not_found.dart';
 import 'package:silvertime/screens/notifications.dart';
@@ -28,7 +30,6 @@ class RouterAdmin {
       ),
       child: component,
     );
-    
     return PageTransition(
       child: newComponent,
       type: PageTransitionType.fade,
@@ -48,7 +49,7 @@ class RouterAdmin {
       );
 
       bool auth = Provider.of<Auth> (context, listen: false).tryAutoLogin ();
-      if (routingData.route != "/splash") {
+      if (routingData.route != "/splash" || routingData.route != "/first-time") {
         if (!auth) {
           printWarning ("Not authenticated");
           printWarning ("Redirecting");
@@ -66,6 +67,16 @@ class RouterAdmin {
       Provider.of<UI> (context, listen: false).currentRoute = routeToLook;
 
       switch (routeToLook) {
+        case AccountScreen.routeName:
+          return getMaterialPageRoute (
+            const AccountScreen (),
+            settings, dark
+          );
+        case FirstTimeScreen.routeName:
+          return getMaterialPageRoute(
+            const FirstTimeScreen(), 
+            settings, dark
+          );
         case HomeScreen.routeName:
           return getMaterialPageRoute(
             const HomeScreen (), 
@@ -87,7 +98,7 @@ class RouterAdmin {
             settings, dark
           );
         default:
-          settings = settings.copyWith (
+          settings = const RouteSettings (
             name: "/not-found",
             arguments: {}
           );
