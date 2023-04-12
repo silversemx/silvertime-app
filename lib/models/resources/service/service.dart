@@ -157,7 +157,11 @@ class Service {
     required this.name,
   });
   
-  Service.empty ();
+  Service.empty ({String? name}) {
+    if (name != null) {
+      this.name = name;
+    }
+  }
 
   factory Service.fromJson (dynamic json) {
     return Service(
