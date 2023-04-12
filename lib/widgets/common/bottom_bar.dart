@@ -62,6 +62,11 @@ class _BottomBarState extends State<BottomBar> {
           route: "/home"
         ),
         _button (
+          icon: Icons.report_problem_outlined,
+          selectedIcon: Icons.report_problem_sharp,
+          route: "/reports"
+        ),
+        _button (
           icon: Icons.notifications_outlined,
           selectedIcon: Icons.notifications_sharp,
           route: "/notifications"
