@@ -1,21 +1,25 @@
 import 'dart:async';
 
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:http_request_utils/models/http_exception.dart';
 import 'package:searchfield/searchfield.dart';
 import 'package:silvertime/include.dart';
+import 'package:silvertime/widgets/in_app_messages/error_dialog.dart';
 
 class CustomInputSearchField<T> extends StatefulWidget {
-  final SearchFieldListItem? initialValue;
+  final SearchFieldListItem<T>? initialValue;
   final String label;
-  final Future<List<T>?> Function (String) fetch;
+  final Future<List<T>?> Function (String?) fetch;
   final int seconds;
   final bool showSuggestions;
   final int maxSuggestionsInViewPort;
   final Future<String?> Function (String)? onSubmit;
-  final Function (String)? onSuggestionTap;
-  final SearchFieldListItem<String> Function (T)? searchFieldMap;
+  final Function (T)? onSuggestionTap;
+  final SearchFieldListItem<T> Function (T)? searchFieldMap;
   final Function ()? clearSelection;
   final bool? validation;
+  final bool fetchAfterSubmission;
+  final Color? color;
 
   /// Custom Input search field to enable continuous writing while searching for a 
   /// value
@@ -35,7 +39,9 @@ class CustomInputSearchField<T> extends StatefulWidget {
     this.showSuggestions = true,
     this.maxSuggestionsInViewPort = 5,
     this.seconds = 2,
-    this.validation
+    this.validation,
+    this.color,
+    this.fetchAfterSubmission = false
   }) : assert (
     (
       showSuggestions 
@@ -48,10 +54,10 @@ class CustomInputSearchField<T> extends StatefulWidget {
   ), super(key: key);
 
   @override
-  State<CustomInputSearchField> createState() => _CustomInputSearchFieldState<T>();
+  State<CustomInputSearchField<T>> createState() => _CustomInputSearchFieldState<T>();
 }
 
-class _CustomInputSearchFieldState<T> extends State<CustomInputSearchField> {
+class _CustomInputSearchFieldState<T> extends State<CustomInputSearchField<T>> {
   String _lastSearch = "";
   Timer? _timer;
   final TextEditingController _textController = TextEditingController();
@@ -62,7 +68,25 @@ class _CustomInputSearchFieldState<T> extends State<CustomInputSearchField> {
   @override
   void initState() {
     super.initState();
+    Future.microtask (_fetchInfo);
     _listeners();
+  }
+
+  void _fetchInfo() async {
+    setState(() {
+      _searching = true;
+    });
+    try {
+      if (widget.showSuggestions) {
+        suggestions = (await widget.fetch (null))!;
+      }
+    } on HttpException catch(error) {
+      showErrorDialog(context, exception: error);
+    } finally {
+      setState(() {
+        _searching = false;
+      });
+    }
   }
 
   void _listeners () {
@@ -93,6 +117,8 @@ class _CustomInputSearchFieldState<T> extends State<CustomInputSearchField> {
 
   InputDecoration get decoration => InputDecoration (
     labelText: widget.label,
+    fillColor: widget.color,
+    focusColor: widget.color,
     enabledBorder: (widget.validation ?? false)
     ? Theme.of(context).inputDecorationTheme.enabledBorder!.copyWith(
       borderSide: const BorderSide(
@@ -125,9 +151,9 @@ class _CustomInputSearchFieldState<T> extends State<CustomInputSearchField> {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SearchField<String>(
+        SearchField<T>(
           suggestions: widget.showSuggestions
-          ? suggestions.map<SearchFieldListItem<String>> (
+          ? suggestions.map<SearchFieldListItem<T>> (
             (T suggestion) => widget.searchFieldMap!(suggestion)
           ).toList()
           : [],
@@ -142,27 +168,40 @@ class _CustomInputSearchFieldState<T> extends State<CustomInputSearchField> {
                 _textController.selection = TextSelection.collapsed(
                   offset: res.length
                 );
-                setState(() {
-                  _selected = true;
-                });
+                
+                if (widget.fetchAfterSubmission) {
+                  _textController.clear ();
+                  _fetchInfo();
+                } else {
+                  setState(() {
+                    _selected = true;
+                  });
+                }
               }
             }
           },
           onSuggestionTap: (suggestion) {
             if (widget.showSuggestions) {
-              widget.onSuggestionTap!(suggestion.item!);
+              widget.onSuggestionTap!(suggestion.item as T);
               _textController.text = suggestion.searchKey;
               _textController.selection = TextSelection.collapsed(
                 offset: suggestion.searchKey.length
               );
-              setState(() {
-                _selected = true;
-              });
+              
+              if (widget.fetchAfterSubmission) {
+                _textController.clear ();
+                _fetchInfo();
+              } else {
+                setState(() {
+                  _selected = true;
+                });
+              }
             }
+            unfocus (context);
           },
         ),
         Visibility (
-          visible: _selected,
+          visible: _selected && !widget.fetchAfterSubmission,
           child: TextButton (
             onPressed: () {
               if (widget.showSuggestions) {
