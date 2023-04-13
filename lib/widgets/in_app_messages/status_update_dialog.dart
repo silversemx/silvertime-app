@@ -31,7 +31,6 @@ class StatusUpdateDialog<T> extends StatefulWidget {
 class _StatusUpdateDialogState<T> extends State<StatusUpdateDialog<T>> {
   bool _loading = false;
   List<StatusUpdate<T>> history = [];
-  final ScrollController _scrollController = ScrollController();
 
   @override
   void initState () {
