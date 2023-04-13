@@ -9,8 +9,8 @@ import 'package:silvertime/providers/auth.dart';
 
 class Overviews extends AuthProvider {
   DateTimeRange range = DateTimeRange (
-    end: DateTime.now (),
-    start: DateTime.now ().subtract (
+    end: DateTime.now ().copyWithoutTime,
+    start: DateTime.now ().copyWithoutTime.subtract (
       const Duration (days: 30)
     )
   );
