@@ -2,8 +2,11 @@ import 'dart:typed_data';
 
 import 'package:http_request_utils/body_utils.dart';
 import 'package:silvertime/include.dart';
-import 'package:silvertime/models/status/interruption/interruption.dart';
 import 'package:silvertime/models/status/reports/report_types.dart';
+import 'package:silvertime/models/system/types.dart';
+
+export 'package:silvertime/models/status/reports/report_types.dart';
+export 'package:silvertime/models/system/types.dart';
 
 class ReportImageFile {
   Uint8List? bytes;
