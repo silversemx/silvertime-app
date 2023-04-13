@@ -3,12 +3,12 @@ import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:silvertime/include.dart';
 import 'package:silvertime/models/status/reports/report.dart';
-import 'package:silvertime/models/status/reports/report_types.dart';
 import 'package:silvertime/providers/status/reports.dart';
 import 'package:silvertime/screens/reports/report_input.dart';
 import 'package:silvertime/style/container.dart';
 import 'package:silvertime/widgets/common/bottom_bar.dart';
 import 'package:silvertime/widgets/in_app_messages/error_dialog.dart';
+import 'package:silvertime/widgets/in_app_messages/status_snackbar.dart';
 import 'package:silvertime/widgets/quill/quill_reader.dart';
 import 'package:skeletons/skeletons.dart';
 
@@ -59,6 +59,19 @@ class _ReportsScreenState extends State<ReportsScreen> {
     }
   }
   
+  void _create () async {
+    bool? retval = await Navigator.of (context).push (
+      PageTransition(
+        child: const InputReportScreen (), 
+        type: PageTransitionType.fade
+      )
+    );
+
+    if (retval ?? false){
+      showStatusSnackbar(context, S.of (context).reportSuccessfullyCreated);
+    }
+  }
+
   Widget _title () {
     return SizedBox (
       width: double.infinity,
@@ -77,6 +90,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
               overlayColor: MaterialStateProperty.all(Colors.transparent),
               shape: MaterialStateProperty.all(const CircleBorder())
             ),
+            onPressed: _create,
             child: const Padding(
               padding: EdgeInsets.all(16.0),
               child: Icon (
@@ -84,14 +98,6 @@ class _ReportsScreenState extends State<ReportsScreen> {
                 color: UIColors.white,
               ),
             ),
-            onPressed: (){
-              Navigator.of (context).push (
-                PageTransition(
-                  child: const InputReportScreen (), 
-                  type: PageTransitionType.fade
-                )
-              );
-            },
           )
         ],
       ),
@@ -120,88 +126,97 @@ class _ReportsScreenState extends State<ReportsScreen> {
 
   
   Widget _report (Report report) {
-    return Container (
-      margin: const EdgeInsets.only(
-        bottom: 16
-      ),
-      decoration: containerDecoration,
-      padding: const EdgeInsets.all(16),
-      child: Column (
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text (
-            report.date.dateTimeString,
-            style: Theme.of(context).textTheme.headlineMedium,
-          ),
-          const SizedBox(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text (
-                    report.title,
-                    style: Theme.of(context).textTheme.displaySmall,
-                  ),
-                  _richValue(
-                    S.of (context).priority, 
-                    report.priority.name(context),
-                    color: report.priority.color
-                  ),
-                ],
-              ),
-              report.status.widget(context)
-            ],
-          ),
-          Container(
-            margin: const EdgeInsets.symmetric(
-              vertical: 16
+    return InkWell(
+      onTap: () {
+        locator<NavigationService> ()
+        .navigateTo(
+          "/report", 
+          queryParams: {"report": report.id}
+        );
+      },
+      child: Container (
+        margin: const EdgeInsets.only(
+          bottom: 16
+        ),
+        decoration: containerDecoration,
+        padding: const EdgeInsets.all(16),
+        child: Column (
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text (
+              report.date.dateTimeString,
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
-            decoration: containerDecoration.copyWith(
-              color: Theme.of(context).scaffoldBackgroundColor
-            ),
-            padding: const EdgeInsets.all(8),
-            child: QuillReaderWidget(
-              value: report.text,
-            ),
-          ),
-          const SizedBox(height: 16),
-          SizedBox (
-            width: double.infinity,
-            child: Wrap (
-              alignment: WrapAlignment.spaceAround,
-              crossAxisAlignment: WrapCrossAlignment.center,
+            const SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _richValue(
-                  S.of (context).scope, report.scope.name,
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text (
+                      report.title,
+                      style: Theme.of(context).textTheme.displaySmall,
+                    ),
+                    _richValue(
+                      S.of (context).priority, 
+                      report.priority.name(context),
+                      color: report.priority.color
+                    ),
+                  ],
                 ),
-                _richValue(
-                  S.of (context).type, report.type.name(context),
-                ),
+                report.status.widget(context)
               ],
             ),
-          ),
-          Visibility(
-            visible: report.solution != null,
-            child: Container(
+            Container(
               margin: const EdgeInsets.symmetric(
                 vertical: 16
               ),
               decoration: containerDecoration.copyWith(
-                color: UIColors.inputSuccess.withOpacity(0.3)
+                color: Theme.of(context).scaffoldBackgroundColor
               ),
               padding: const EdgeInsets.all(8),
               child: QuillReaderWidget(
-                value: report.solution,
+                value: report.text,
               ),
             ),
-          ),
-        ],
-      )
+            const SizedBox(height: 16),
+            SizedBox (
+              width: double.infinity,
+              child: Wrap (
+                alignment: WrapAlignment.spaceAround,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: [
+                  _richValue(
+                    S.of (context).scope, report.scope.name (context),
+                  ),
+                  _richValue(
+                    S.of (context).type, report.type.name(context),
+                  ),
+                ],
+              ),
+            ),
+            Visibility(
+              visible: report.solution != null,
+              child: Container(
+                margin: const EdgeInsets.symmetric(
+                  vertical: 16
+                ),
+                decoration: containerDecoration.copyWith(
+                  color: UIColors.inputSuccess.withOpacity(0.3)
+                ),
+                padding: const EdgeInsets.all(8),
+                child: QuillReaderWidget(
+                  value: report.solution,
+                ),
+              ),
+            ),
+          ],
+        )
+      ),
     );
   }
 
@@ -250,6 +265,61 @@ class _ReportsScreenState extends State<ReportsScreen> {
     );
   }
 
+  Widget _pageIndicator () {
+    return Center (
+      child: Container (
+        decoration: containerDecoration.copyWith(
+          boxShadow: [
+            BoxShadow (
+              color: Theme.of(context).shadowColor,
+              blurRadius: 5,
+              spreadRadius: 1
+            )
+          ]
+        ),
+        padding: const EdgeInsets.all(4),
+        child: Row (
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            IconButton (
+              icon: const Icon (
+                Icons.keyboard_arrow_left,
+                size: 24,
+              ),
+              onPressed: () {
+                if (_currentPage > 0) {
+                  currentPage = _currentPage -1;
+                }
+              },
+            ),
+            Text (
+              "${_currentPage + 1} / ${
+                Provider.of<Reports> (context).pages
+              }",
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+            IconButton (
+              icon: const Icon (
+                Icons.keyboard_arrow_right,
+                size: 24,
+              ),
+              onPressed: () {
+                if (
+                  _currentPage 
+                  < Provider.of<Reports> (context, listen: false).pages - 1
+                ) {
+                  currentPage = _currentPage + 1;
+                }
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold (
@@ -260,25 +330,37 @@ class _ReportsScreenState extends State<ReportsScreen> {
           onRefresh: () async {
             await _fetchInfo();
           },
-          child: SingleChildScrollView(
-            child: Container (
-              constraints: BoxConstraints (
-                minHeight: MediaQuery.of(context).size.height
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: SingleChildScrollView(
+                  child: Container (
+                    constraints: BoxConstraints (
+                      minHeight: MediaQuery.of(context).size.height
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16
+                    ),
+                    child: Column (
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 16),
+                        _title(),
+                        const SizedBox(height: 16),
+                        _reports (),
+                        const SizedBox(height: 56),
+                      ],
+                    ),
+                  ),
+                ),
               ),
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16
-              ),
-              child: Column (
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 16),
-                  _title(),
-                  const SizedBox(height: 16),
-                  _reports (),
-                ],
-              ),
-            ),
+              Positioned (
+                bottom: 16,
+                right: 16,
+                child: _pageIndicator(),
+              )
+            ],
           ),
         ),
       ),
