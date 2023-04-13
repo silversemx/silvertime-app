@@ -36,6 +36,7 @@ class AuthInfo {
     return {
       "email": email,
       "password": password,
+      "session_type": 1
     };
   }
 }
