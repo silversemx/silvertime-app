@@ -296,5 +296,7 @@
     "reportSuccessfullyCreated": "Reporte creado correctamente",
     "reportSuccessfullyDeleted": "Reporte eliminado correctamente",
     "reportSuccessfullyUpdated": "Reporte actualizado correctamente",
+    "postedBy": "Publicado por",
+    "userInformation": "User information",
     "zone": "Zona"
 }

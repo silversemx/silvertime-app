@@ -2882,6 +2882,26 @@ class S {
     );
   }
 
+  /// `Posted By`
+  String get postedBy {
+    return Intl.message(
+      'Posted By',
+      name: 'postedBy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User information`
+  String get userInformation {
+    return Intl.message(
+      'User information',
+      name: 'userInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Edit Report`
   String get editReport {
     return Intl.message(

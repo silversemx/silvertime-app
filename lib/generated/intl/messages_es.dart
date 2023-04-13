@@ -224,6 +224,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Selecciona otra imagen"),
         "platformOverview":
             MessageLookupByLibrary.simpleMessage("Resumen de plataforma"),
+        "postedBy": MessageLookupByLibrary.simpleMessage("Publicado por"),
         "priority": MessageLookupByLibrary.simpleMessage("Prioridad"),
         "programmedBy": MessageLookupByLibrary.simpleMessage("Programada por"),
         "progress": MessageLookupByLibrary.simpleMessage("Progreso"),
@@ -358,6 +359,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "type": MessageLookupByLibrary.simpleMessage("Tipo"),
         "updateStatus":
             MessageLookupByLibrary.simpleMessage("Actualizar Status"),
+        "userInformation":
+            MessageLookupByLibrary.simpleMessage("User information"),
         "userStatus_active": MessageLookupByLibrary.simpleMessage("Activo"),
         "userStatus_blocked": MessageLookupByLibrary.simpleMessage("Bloqueado"),
         "userStatus_inactive": MessageLookupByLibrary.simpleMessage("Inactivo"),

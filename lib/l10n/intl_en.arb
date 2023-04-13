@@ -309,6 +309,8 @@
     "captureImage": "Capture picture",
     "camera": "Camera",
     "createReport": "Create Report",
+    "postedBy": "Posted By",
+    "userInformation": "User information",
     "editReport": "Edit Report",
     "reportSuccessfullyCreated": "Report successfully created",
     "reportSuccessfullyDeleted": "Report successfully deleted",
