@@ -16,6 +16,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   StreamController<int> currentPageStream = StreamController.broadcast();
   StreamController<int> pagesStream = StreamController.broadcast();
+  StreamController<bool> refreshStream = StreamController.broadcast();
   int _currentPage = 0;
 
   set currentPage (int newPage) {
@@ -29,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void dispose() {
     currentPageStream.close();
     pagesStream.close();
+    refreshStream.close ();
     super.dispose();
   }
 
@@ -100,21 +102,27 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Stack(
           children: [
             Positioned.fill(
-              child: SingleChildScrollView(
-                child: Container (
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16
-                  ),
-                  child: Column (
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 16),
-                      ServicesScreen(
-                        currentPageStream: currentPageStream.stream,
-                        pagesSink: pagesStream.sink,  
-                      )
-                    ],
+              child: RefreshIndicator(
+                onRefresh: () async {
+                  refreshStream.sink.add (true);
+                },
+                child: SingleChildScrollView(
+                  child: Container (
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16
+                    ),
+                    child: Column (
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 16),
+                        ServicesScreen(
+                          currentPageStream: currentPageStream.stream,
+                          pagesSink: pagesStream.sink,  
+                          refreshStream: refreshStream.stream,
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),

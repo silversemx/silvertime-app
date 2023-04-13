@@ -17,9 +17,11 @@ import 'package:skeletons/skeletons.dart';
 
 class ServicesScreen extends StatefulWidget {
   final Stream<int> currentPageStream;
+  final Stream<void> refreshStream;
   final Sink<int> pagesSink;
   const ServicesScreen({
     super.key, 
+    required this.refreshStream,
     required this.currentPageStream,
     required this.pagesSink
   });
@@ -46,7 +48,6 @@ class _ServicesScreenState extends State<ServicesScreen> {
 
     _fetchInfo ();
   }
-
   
   set currentPage (int newPage) {
     _currentPage = newPage;
@@ -74,6 +75,10 @@ class _ServicesScreenState extends State<ServicesScreen> {
   void _listeners () {
     widget.currentPageStream.listen((event) {
       currentPage = event;
+    });
+
+    widget.refreshStream.listen((event) {
+        _fetchInfo();
     });
   }
 
@@ -255,6 +260,10 @@ class _ServicesScreenState extends State<ServicesScreen> {
                   );
 
                   if (newRange != null) {
+                    print (newRange.start);
+                    print (newRange.start.millisecondsSinceEpoch);
+                    print (newRange.end);
+                    print (newRange.end.millisecondsSinceEpoch);
                     Provider.of<Overviews> (context, listen: false).range = newRange;
                     _fetchInfo();
                   }
@@ -294,8 +303,6 @@ class _ServicesScreenState extends State<ServicesScreen> {
       validation: false,
     );
   }
-
- 
 
   Widget _tag (ServiceTag tag) {
     return InkWell(
@@ -431,7 +438,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
     );
   }
 
-   Widget _filters () {
+  Widget _filters () {
     return Theme(
       data: Theme.of(context).copyWith(
         dividerColor: Colors.transparent
