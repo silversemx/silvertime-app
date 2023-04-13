@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:silvertime/include.dart';
 import 'package:silvertime/models/user/auth.dart';
 import 'package:silvertime/providers/auth.dart';
+import 'package:silvertime/version.dart';
 import 'package:silvertime/widgets/in_app_messages/error_dialog.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -154,6 +155,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       textAlign: TextAlign.center,
                     ),
                 )
+              ),
+              const SizedBox(height: 16),
+              Text (
+                "$versionName - $versionDate",
+                style: Theme.of(context).textTheme.bodySmall,
               )
             ],
           ),
