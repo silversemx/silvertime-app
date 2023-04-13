@@ -313,45 +313,48 @@ class _ReportsScreenState extends State<ReportsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold (
-      bottomNavigationBar: const BottomBar(),
-      body: SafeArea(
-        bottom: false,
-        child: RefreshIndicator(
-          onRefresh: () async {
-            await _fetchInfo();
-          },
-          child: Stack(
-            children: [
-              Positioned.fill(
-                child: SingleChildScrollView(
-                  child: Container (
-                    constraints: BoxConstraints (
-                      minHeight: MediaQuery.of(context).size.height
-                    ),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16
-                    ),
-                    child: Column (
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 16),
-                        _title(),
-                        const SizedBox(height: 16),
-                        _reports (),
-                        const SizedBox(height: 56),
-                      ],
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold (
+        bottomNavigationBar: const BottomBar(),
+        body: SafeArea(
+          bottom: false,
+          child: RefreshIndicator(
+            onRefresh: () async {
+              await _fetchInfo();
+            },
+            child: Stack(
+              children: [
+                Positioned.fill(
+                  child: SingleChildScrollView(
+                    child: Container (
+                      constraints: BoxConstraints (
+                        minHeight: MediaQuery.of(context).size.height
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16
+                      ),
+                      child: Column (
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 16),
+                          _title(),
+                          const SizedBox(height: 16),
+                          _reports (),
+                          const SizedBox(height: 56),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Positioned (
-                bottom: 16,
-                right: 16,
-                child: _pageIndicator(),
-              )
-            ],
+                Positioned (
+                  bottom: 16,
+                  right: 16,
+                  child: _pageIndicator(),
+                )
+              ],
+            ),
           ),
         ),
       ),

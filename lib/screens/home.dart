@@ -95,44 +95,47 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: const BottomBar (),
-      body: SafeArea(
-        bottom: false,
-        child: Stack(
-          children: [
-            Positioned.fill(
-              child: RefreshIndicator(
-                onRefresh: () async {
-                  refreshStream.sink.add (true);
-                },
-                child: SingleChildScrollView(
-                  child: Container (
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16
-                    ),
-                    child: Column (
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 16),
-                        ServicesScreen(
-                          currentPageStream: currentPageStream.stream,
-                          pagesSink: pagesStream.sink,  
-                          refreshStream: refreshStream.stream,
-                        )
-                      ],
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        bottomNavigationBar: const BottomBar (),
+        body: SafeArea(
+          bottom: false,
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: RefreshIndicator(
+                  onRefresh: () async {
+                    refreshStream.sink.add (true);
+                  },
+                  child: SingleChildScrollView(
+                    child: Container (
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16
+                      ),
+                      child: Column (
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 16),
+                          ServicesScreen(
+                            currentPageStream: currentPageStream.stream,
+                            pagesSink: pagesStream.sink,  
+                            refreshStream: refreshStream.stream,
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            Positioned (
-              bottom: 16,
-              right: 16,
-              child: _pageIndicator(),
-            )
-          ],
+              Positioned (
+                bottom: 16,
+                right: 16,
+                child: _pageIndicator(),
+              )
+            ],
+          ),
         ),
       ),
     );

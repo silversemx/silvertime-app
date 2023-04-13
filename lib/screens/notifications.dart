@@ -215,10 +215,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> with TickerPr
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async {
-        Navigator.of(context).pushReplacementNamed("/home");
-        return false;
-      },
+      onWillPop: () async => false,
       child: Scaffold(
         bottomNavigationBar: const BottomBar(),
         body: SafeArea(
