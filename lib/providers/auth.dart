@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_request_utils/body_utils.dart';
 import 'package:jwt_decode/jwt_decode.dart';
@@ -118,6 +119,33 @@ class Auth extends ChangeNotifier {
     return true;
   }
 
+  Future<void> sendFirebase() async {
+    const url =  "$serverURL/api/users/firebase";
+
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
+    
+    try {
+      final res = await http.post(Uri.parse(url), 
+        headers: {"Authorization": token!},
+        body: json.encode({
+          "firebase": await messaging.getToken()
+        })
+      );
+    
+      switch(res.statusCode){
+        case 200:
+        break;
+        default:
+          throw HttpException(res.body, status: res.statusCode, code: Code.request);
+      }
+      notifyListeners();
+    } on HttpException {
+      rethrow;
+    } catch (error) {
+      throw HttpException(error.toString(), code: Code.system);
+    }
+  }
+
   Future<void> login (AuthInfo authInfo) async {
     const url = "$serverURL/api/users/login";
     
@@ -132,6 +160,7 @@ class Auth extends ChangeNotifier {
       switch(res.statusCode){
         case 200:
           _setToken (res.body);
+          await sendFirebase();
         break;
         default:
           throw HttpException(
