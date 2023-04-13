@@ -1,6 +1,7 @@
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:silvertime/providers/auth.dart';
+import 'package:silvertime/providers/notifications/notifications.dart';
 import 'package:silvertime/providers/overview.dart';
 import 'package:silvertime/providers/resources/services/instances.dart';
 import 'package:silvertime/providers/resources/services/services.dart';
@@ -21,7 +22,11 @@ final List<SingleChildWidget> mainProviders = [
   ChangeNotifierProxyProvider<Auth, Users>(
     create: (ctx) => Users (), 
     update: (ctx, auth, users) => users!..update (auth)
-  )
+  ),
+  ChangeNotifierProxyProvider<Auth, Notifications>(
+    create: (ctx) => Notifications (), 
+    update: (ctx, auth, notifications) => notifications!..update (auth)
+  ),
 ];
 
 final List<SingleChildWidget> resourceProviders = [
