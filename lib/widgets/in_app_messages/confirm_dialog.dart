@@ -11,9 +11,6 @@ Future showConfirmDialog(
 
     context: context,
     builder: (ctx) => Dialog(
-      insetPadding: EdgeInsets.symmetric(
-        horizontal: MediaQuery.of(context).size.width * 0.3
-      ),
       child: Container(
         padding: const EdgeInsets.all(16),
         child: Column(
