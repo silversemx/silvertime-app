@@ -13,6 +13,7 @@ import 'package:silvertime/screens/first_time.dart';
 import 'package:silvertime/screens/home.dart';
 import 'package:silvertime/screens/not_found.dart';
 import 'package:silvertime/screens/notifications.dart';
+import 'package:silvertime/screens/reports/report.dart';
 import 'package:silvertime/screens/reports/reports.dart';
 import 'package:silvertime/screens/splash.dart';
 
@@ -91,6 +92,11 @@ class RouterAdmin {
         case NotificationsScreen.routeName:
           return getMaterialPageRoute(
             const NotificationsScreen(), 
+            settings, dark
+          );
+        case ReportScreen.routeName:
+          return getMaterialPageRoute(
+            const ReportScreen(), 
             settings, dark
           );
         case ReportsScreen.routeName:
