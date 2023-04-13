@@ -8,6 +8,7 @@ import 'package:silvertime/models/notifications/notification.dart';
 import 'package:silvertime/models/notifications/notification_subject.dart';
 import 'package:silvertime/providers/notifications/notifications.dart';
 import 'package:silvertime/providers/notifications/push_notifications.dart';
+import 'package:silvertime/style/container.dart';
 import 'package:silvertime/widgets/common/bottom_bar.dart';
 import 'package:silvertime/widgets/in_app_messages/confirm_dialog.dart';
 import 'package:silvertime/widgets/in_app_messages/error_dialog.dart';
@@ -53,13 +54,14 @@ class _NotificationsScreenState extends State<NotificationsScreen> with TickerPr
     } finally {
       _subjects.add(
         NotificationSubject (
-          color: UIColors.hint,
+          color: const Color.fromARGB(105, 68, 81, 97),
           id: "other_internal",
           name: S.of(context).serviceType_other,
           description: "Other subject",
           date: DateTime.now ()
         )
       );
+
       _tabController = TabController(length: _subjects.length, vsync: this);
       setState(() {
         _loading = false;
@@ -68,25 +70,26 @@ class _NotificationsScreenState extends State<NotificationsScreen> with TickerPr
   }
 
   Widget _tabs () {
-    return ExtendedTabBar(
-      controller: _tabController,
-      indicatorColor: Theme.of(context).primaryColor,
-      tabs: [
-        for (int i = 0; i< _tabController.length; i ++)
-          Container (
-            margin: const EdgeInsets.only(
-              bottom: 8
-            ),
-            child: Text (
-              _subjects [i].name,
-              style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                color: _tabController.index == i
-                ? _subjects[i].color
-                : Theme.of(context).primaryColor
-              ),
-            )
-          )
-      ]
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16
+      ),
+      child: CustomDropdownFormField<String>(
+        value: _subjects [_tabController.index].id, 
+        items: _subjects.map<String> (
+          (subject)=> subject.id
+        ).toList (), 
+        onChanged: (val) {
+          _tabController.animateTo(
+            _subjects.indexWhere((element) => element.id == val)
+          );
+        }, 
+        name: (val) {
+          return _subjects.firstWhere((element) => element.id == val).name;
+        }, 
+        label: S.of  (context).subject, 
+        validation: false
+      ),
     );
   }
   
@@ -111,17 +114,13 @@ class _NotificationsScreenState extends State<NotificationsScreen> with TickerPr
         NotificationsManager.instance.changeNotificationReadState(notification.id);
       },
       child: Container (
+        decoration: containerDecoration,
+        margin: const EdgeInsets.symmetric(
+          vertical: 16
+        ),
         padding: const EdgeInsets.symmetric(
           vertical: 16,
           horizontal: 32
-        ),
-        decoration: BoxDecoration (
-          border: Border (
-            bottom: BorderSide (
-              color: Theme.of(context).dividerColor,
-              width: 1
-            )
-          )
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -169,42 +168,43 @@ class _NotificationsScreenState extends State<NotificationsScreen> with TickerPr
   }
 
   Widget _notifications (List<PushNotification> notifications) {
-    return ListView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: notifications.length,
-      itemBuilder: (ctx, i) {
-        PushNotification notification = notifications [i];
-        return Slidable(
-          startActionPane: ActionPane (
-            motion: const DrawerMotion(),
-            // dismissible: DismissiblePane(onDismissed: () {}),
-            children: [
-              SlidableAction(
-                onPressed: (ctx) async {
-                  bool? retval = await showConfirmDialog(context, title: S.of(context).areYouSure, body: S.of(context).thisCantBeUndone);
-
-                  if (retval ?? false) {
-                    NotificationsManager.instance.deleteNotification(notification.id);
-                  }
-                },
-                backgroundColor: Theme.of(context).secondaryHeaderColor,
-                icon: Icons.delete,
-              )
-            ],
-          ),
-          child: Container(
-            decoration: BoxDecoration (
-              border:  Border (
-                bottom: BorderSide (
-                  color: Theme.of(context).dividerColor
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16
+      ),
+      child: ListView.builder(
+        itemCount: notifications.length + 1,
+        itemBuilder: (ctx, i) {
+          if (notifications.length == i) {
+            return const SizedBox(
+              height: 32,
+            );
+          }
+          PushNotification notification = notifications [i];
+          return Slidable(
+            startActionPane: ActionPane (
+              motion: const DrawerMotion(),
+              // dismissible: DismissiblePane(onDismissed: () {}),
+              children: [
+                SlidableAction(
+                  onPressed: (ctx) async {
+                    bool? retval = await showConfirmDialog(context, title: S.of(context).areYouSure, body: S.of(context).thisCantBeUndone);
+    
+                    if (retval ?? false) {
+                      NotificationsManager.instance.deleteNotification(notification.id);
+                    }
+                  },
+                  backgroundColor: Theme.of(context).secondaryHeaderColor,
+                  icon: Icons.delete,
                 )
-              )
+              ],
             ),
-            child: _notification(notification)
-          ),
-        );
-      }
+            child: Container(
+              child: _notification(notification)
+            ),
+          );
+        },
+      ),
     );
   }
   
@@ -223,57 +223,59 @@ class _NotificationsScreenState extends State<NotificationsScreen> with TickerPr
             style: Theme.of(context).textTheme.displayMedium,
           ),
         ),
-        body: StreamBuilder<List<PushNotification>>(
-          stream: NotificationsManager.instance.notificationStream,
-          builder: (context, snapshot) {
-            if (_loading) {
-              return Center (
-                child: SpinKitDoubleBounce (
-                  color: Theme.of(context).primaryColor,
-                  size: 24,
-                ),
-              );
-            }
-            Map<String, List<PushNotification>> notificationsGroupedBySubject = (snapshot.data ?? []).groupListsBy((element) => element.subject);
-
-            List<Widget> children = [];
-            for (NotificationSubject subject in _subjects) {
-              List<PushNotification>? notifs = notificationsGroupedBySubject [subject.id];
-          
-              if (notifs != null) {
-                children.add (
-                  _notifications(notifs)
-                );
-              } else {
-                children.add (
-                  Center (
-                    child: Text (
-                      S.of (context).noInformation,
-                      style: Theme.of(context).textTheme.displaySmall,
-                    ),
-                  )
+        body: SafeArea(
+          bottom: false,
+          child: StreamBuilder<List<PushNotification>>(
+            stream: NotificationsManager.instance.notificationStream,
+            builder: (context, snapshot) {
+              if (_loading) {
+                return Center (
+                  child: SpinKitDoubleBounce (
+                    color: Theme.of(context).primaryColor,
+                    size: 24,
+                  ),
                 );
               }
+              Map<String, List<PushNotification>> notificationsGroupedBySubject = (
+                snapshot.data ?? []).groupListsBy((element) => element.subject
+              );
+        
+              List<Widget> children = [];
+              for (NotificationSubject subject in _subjects) {
+                List<PushNotification>? notifs = notificationsGroupedBySubject [subject.id];
+            
+                if (notifs != null) {
+                  children.add (
+                    _notifications(notifs),
+                  );
+                } else {
+                  children.add (
+                    Center (
+                      child: Text (
+                        S.of (context).noInformation,
+                        style: Theme.of(context).textTheme.displaySmall,
+                      ),
+                    )
+                  );
+                }
+              }
+        
+              return Column (
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 16),
+                  _tabs (),
+                  Expanded(
+                    child: ExtendedTabBarView(
+                      controller: _tabController,
+                      children: children
+                    ),
+                  )
+                ],
+              );
             }
-
-            return Column (
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 50,
-                  child: _tabs ()
-                ),
-                Expanded(
-                  child: ExtendedTabBarView(
-                    controller: _tabController,
-                    children: children
-                  ),
-                )
-              ],
-            );
-
-          }
+          ),
         )
       ),
     );
