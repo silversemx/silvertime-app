@@ -2,6 +2,7 @@ import 'dart:io' show Platform;
 
 import 'package:provider/provider.dart';
 import 'package:silvertime/include.dart';
+import 'package:silvertime/providers/notifications/push_notifications.dart';
 import 'package:silvertime/providers/ui.dart';
 
 class BottomBar extends StatefulWidget {
@@ -66,10 +67,52 @@ class _BottomBarState extends State<BottomBar> {
           selectedIcon: Icons.report_problem_sharp,
           route: "/reports"
         ),
-        _button (
-          icon: Icons.notifications_outlined,
-          selectedIcon: Icons.notifications_sharp,
-          route: "/notifications"
+        SizedBox.square(
+          dimension: 32,
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: _button (
+                  icon: Icons.notifications_outlined,
+                  selectedIcon: Icons.notifications_sharp,
+                  route: "/notifications"
+                ),
+              ),
+              Positioned (
+                top: 0,
+                right: 0,
+                child: StreamBuilder(
+                  stream: NotificationsManager.instance.notificationStream,
+                  builder: (context, _) {
+                    return Visibility(
+                      visible: NotificationsManager
+                        .instance.getUnreadNotificationsLength () > 0,
+                      child: Container (
+                        width: 16,
+                        height: 16,
+                        padding: const EdgeInsets.all(2),
+                        decoration: const BoxDecoration (
+                          color: UIColors.error,
+                          shape: BoxShape.circle
+                        ),
+                        child: FittedBox(
+                          fit: BoxFit.contain,
+                          child: Text (
+                            "${
+                              NotificationsManager.instance.getUnreadNotificationsLength ()
+                            }",
+                            style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                              color: UIColors.white
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  }
+                ),
+              )
+            ],
+          ),
         ),
         _button (
           icon: Icons.person_outline,
