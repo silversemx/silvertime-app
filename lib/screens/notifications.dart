@@ -47,7 +47,10 @@ class _NotificationsScreenState extends State<NotificationsScreen> with TickerPr
       Notifications notifications = Provider.of<Notifications> (
         context, listen: false
       );
-      // _subjects = await notifications.getSubjects();
+      _subjects = await notifications.getSubjects();
+    } on HttpException catch(error) {
+      showErrorDialog(context, exception: error);
+    } finally {
       _subjects.add(
         NotificationSubject (
           color: UIColors.hint,
@@ -58,9 +61,6 @@ class _NotificationsScreenState extends State<NotificationsScreen> with TickerPr
         )
       );
       _tabController = TabController(length: _subjects.length, vsync: this);
-    } on HttpException catch(error) {
-      showErrorDialog(context, exception: error);
-    } finally {
       setState(() {
         _loading = false;
       });
