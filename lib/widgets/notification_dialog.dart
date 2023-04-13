@@ -21,6 +21,7 @@ class _NotificationDialogState extends State<NotificationDialog> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            
             Text (
               widget.notification.title,
               style: Theme.of(context).textTheme.displayMedium,
@@ -29,15 +30,12 @@ class _NotificationDialogState extends State<NotificationDialog> {
             const SizedBox(height: 16),
             Text (
               widget.notification.body,
-              style: Theme.of(context).textTheme.bodyLarge,
+              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                fontSize: 24
+              ),
               textAlign: TextAlign.justify,
             ),
             const SizedBox(height: 16,),
-            Text (
-              "${widget.notification.sentDate.dateTimeString} - ${widget.notification.date.dateTimeString}",
-              style: Theme.of(context).textTheme.displayMedium,
-            ),
-            const SizedBox(height: 16),
             Container (
               decoration: BoxDecoration (
                 borderRadius: BorderRadius.circular(24),
@@ -50,7 +48,7 @@ class _NotificationDialogState extends State<NotificationDialog> {
                   )
                 ]
               ),
-              padding: const EdgeInsets.all(4),
+              padding: const EdgeInsets.all(8),
               child: Text (
                 widget.subject.name,
                 style: Theme.of(context).textTheme.headlineMedium!.copyWith(
@@ -66,7 +64,7 @@ class _NotificationDialogState extends State<NotificationDialog> {
                 child: Text (
                   S.of(context).okay,
                   style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                    color: Theme.of(context).primaryColorLight
+                    color: Theme.of(context).primaryColor
                   ),
                 ),
               ),
