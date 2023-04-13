@@ -372,10 +372,10 @@ class S {
     );
   }
 
-  /// `Deleting Maintenances`
+  /// `Deleting Maintenance`
   String get deletingMaintenances {
     return Intl.message(
-      'Deleting Maintenances',
+      'Deleting Maintenance',
       name: 'deletingMaintenances',
       desc: '',
       args: [],
@@ -1082,10 +1082,10 @@ class S {
     );
   }
 
-  /// `Get full information of major outages, interruptions and maintenances of the system, all in the same place`
+  /// `Get full information of major outages, interruptions and maintenance of the system, all in the same place`
   String get knowOverviewText {
     return Intl.message(
-      'Get full information of major outages, interruptions and maintenances of the system, all in the same place',
+      'Get full information of major outages, interruptions and maintenance of the system, all in the same place',
       name: 'knowOverviewText',
       desc: '',
       args: [],
@@ -1242,10 +1242,10 @@ class S {
     );
   }
 
-  /// `Maintenances`
+  /// `Maintenance`
   String get maintenances {
     return Intl.message(
-      'Maintenances',
+      'Maintenance',
       name: 'maintenances',
       desc: '',
       args: [],

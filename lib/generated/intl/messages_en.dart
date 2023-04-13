@@ -71,7 +71,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "deletingMachines":
             MessageLookupByLibrary.simpleMessage("Deleting Machines"),
         "deletingMaintenances":
-            MessageLookupByLibrary.simpleMessage("Deleting Maintenances"),
+            MessageLookupByLibrary.simpleMessage("Deleting Maintenance"),
         "deletingNetworks":
             MessageLookupByLibrary.simpleMessage("Deleting Networks"),
         "deletingServiceTags":
@@ -164,7 +164,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "invalid": MessageLookupByLibrary.simpleMessage("Invalid"),
         "invalidEmail": MessageLookupByLibrary.simpleMessage("Invalid Email"),
         "knowOverviewText": MessageLookupByLibrary.simpleMessage(
-            "Get full information of major outages, interruptions and maintenances of the system, all in the same place"),
+            "Get full information of major outages, interruptions and maintenance of the system, all in the same place"),
         "lastname": MessageLookupByLibrary.simpleMessage("Last name"),
         "legal": MessageLookupByLibrary.simpleMessage("Legal"),
         "limit": MessageLookupByLibrary.simpleMessage("Services per Page"),
@@ -195,7 +195,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "maintenanceTime_none": MessageLookupByLibrary.simpleMessage("None"),
         "maintenanceTime_other": MessageLookupByLibrary.simpleMessage("Other"),
         "maintenanceTime_range": MessageLookupByLibrary.simpleMessage("Range"),
-        "maintenances": MessageLookupByLibrary.simpleMessage("Maintenances"),
+        "maintenances": MessageLookupByLibrary.simpleMessage("Maintenance"),
         "majorInterruptions":
             MessageLookupByLibrary.simpleMessage("Major Interruptions"),
         "minutes": MessageLookupByLibrary.simpleMessage("Minutes"),
