@@ -42,7 +42,7 @@ class Notifications extends AuthProvider {
     }
   }
 
-  Future<NotificationSubject?> getSubject (String id) async {
+  Future<NotificationSubject?> getSubject (String id, {bool ignore404 = false}) async {
     final url = "$serverURL/api/notifications/subjects/$id/info";
     
     try {
@@ -54,6 +54,12 @@ class Notifications extends AuthProvider {
         case 200:
           final decoded = json.decode(res.body);
           return NotificationSubject.fromJson(decoded);
+        case 404:
+          if (ignore404) {
+            return null;
+          } else {
+            throw HttpException(res.body, code: Code.request, status: res.statusCode);
+          }
         default:
           throw HttpException(res.body, code: Code.request, status: res.statusCode);
       }
