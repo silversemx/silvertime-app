@@ -30,8 +30,8 @@ class _DateRangeCustomPickerDialogState extends State<DateRangeCustomPickerDialo
         onPressed: () {
           setState(() {
             range = DateTimeRange (
-              start: DateTime.now ().subtract(Duration (days: days)),
-              end: DateTime.now ()
+              start: DateTime.now ().copyWithoutTime.subtract(Duration (days: days)),
+              end: DateTime.now ().copyWithoutTime
             );
           });
         },
