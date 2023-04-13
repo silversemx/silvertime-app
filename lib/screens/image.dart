@@ -35,7 +35,7 @@ class _ImageScreenState extends State<ImageScreen> {
       appBar: AppBar (
         title: AutoScrollText (
           widget.filename,
-          style: Theme.of(context).textTheme.bodyText1,
+          style: Theme.of(context).textTheme.bodyLarge,
           curve: Curves.ease,
           velocity: const Velocity(pixelsPerSecond: Offset (30,0)),
         ),
