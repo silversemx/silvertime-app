@@ -1,16 +1,41 @@
-# silvertime
+# SilverTime
 
-A new Flutter project.
+The **tool** you needed to know everything about the ***system***.
 
-## Getting Started
+SilverTime is a multi-platform tool that gives you the power to control and manage all status, interruptions and maintenances of your sistem.
 
-This project is a starting point for a Flutter application.
+![First-Time](./assets/tutorial/silvertime_tutorial.gif)
 
-A few resources to get you started if this is your first Flutter project:
+## Getting started
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+To start with silvertime, get your credentials from your administrator, access with them and start monitoring!
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+**1. Filters in service status**
+
+![Filters](./assets/tutorial/filters.png)
+
+**2. How to read data**
+
+![Filters](./assets/tutorial/status.png)
+
+### Tap a day to get more information!
+
+**3. More information about each day**
+
+- Get interruptions data with status and solutions
+![Overview](./assets/tutorial/interruptions_data.png)
+
+- Get status history
+![StatusHistory](./assets/tutorial/status_history.gif)
+
+**4. Generating reports**
+
+How about reporting at the moment that something is not working how it should be?
+![Report](./assets/tutorial/report.gif)
+### Do it from your phone
+
+
+**5. Get instant Notifications**
+
+Get notified of all the activity that happens in the system.
+![Notification](./assets/tutorial/notification.gif)
