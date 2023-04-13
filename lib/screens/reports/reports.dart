@@ -149,27 +149,18 @@ class _ReportsScreenState extends State<ReportsScreen> {
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             const SizedBox(height: 16),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text (
-                      report.title,
-                      style: Theme.of(context).textTheme.displaySmall,
-                    ),
-                    _richValue(
-                      S.of (context).priority, 
-                      report.priority.name(context),
-                      color: report.priority.color
-                    ),
-                  ],
-                ),
-                report.status.widget(context)
-              ],
+            Center(child: report.status.widget(context)),
+            const SizedBox(height: 16),
+            Text (
+              report.title,
+              style: Theme.of(context).textTheme.displaySmall,
+              maxLines: 3,
+            ),
+            const SizedBox(height: 16),
+            _richValue(
+              S.of (context).priority, 
+              report.priority.name(context),
+              color: report.priority.color
             ),
             Container(
               margin: const EdgeInsets.symmetric(
