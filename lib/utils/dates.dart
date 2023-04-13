@@ -21,6 +21,12 @@ extension DateUpdates on DateTime {
     );
   }
 
+  DateTime get copyWithoutTime {
+    return copyWith(
+      hour: 0, minute: 0, second: 0, millisecond: 0, microsecond: 0
+    );
+  }
+
   bool equalsIgnoreTime (DateTime b, {bool checkHour = false}) {
     DateTime cleanThis = DateTime (year, month, day);
     DateTime cleanB = DateTime (b.year, b.month, b.day);
