@@ -1,9 +1,13 @@
+import 'dart:async';
+
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:silvertime/include.dart';
+import 'package:silvertime/models/notifications/notification_subject.dart';
 import 'package:silvertime/providers.dart';
 import 'package:silvertime/providers/auth.dart';
+import 'package:silvertime/providers/notifications/notifications.dart';
 import 'package:silvertime/providers/notifications/push_notifications.dart';
 import 'package:silvertime/providers/ui.dart';
 import 'package:silvertime/router.dart';
@@ -28,6 +32,7 @@ class SilverTime extends StatefulWidget {
 
 class _SilverTimeState extends State<SilverTime> {
   final GlobalKey<ScaffoldMessengerState> _scaffoldKey = GlobalKey();
+  StreamSubscription? _firebaseSubscription;
 
   @override
   void didChangeDependencies() {
@@ -38,6 +43,60 @@ class _SilverTimeState extends State<SilverTime> {
       context
     );
     super.didChangeDependencies();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _firebaseSubscription?.cancel();
+    super.dispose();
+  }
+
+  void _listeners (BuildContext context) {
+    _firebaseSubscription = PushNotificationsService.notifications.listen(
+      (event) async {
+        NotificationSubject? subject = await Provider.of<Notifications> (
+          context, listen: false
+        ).getSubject (
+          event.subject,
+          ignore404: true
+        );
+        _scaffoldKey.currentState!.showSnackBar(
+          SnackBar (
+            content: InkWell(
+              onTap: () async {
+                locator<NavigationService> ()
+                .navigatorKey.currentState?.pushReplacementNamed("/notifications");
+              },
+              child: Container(
+                padding: const EdgeInsets.all(8),
+                child: Text(
+                  "New 🔔: ${event.title}",
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  maxLines: 4,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ),
+            shape: RoundedRectangleBorder (
+              borderRadius: BorderRadius.circular(48),
+            ),
+            backgroundColor: subject?.color ??
+            Theme.of(context).primaryColor,
+            margin: const EdgeInsets.fromLTRB(15, 5, 15, 20),
+            behavior: SnackBarBehavior.floating,
+          )
+        );
+      }
+    );
   }
 
   @override
@@ -60,6 +119,7 @@ class _SilverTimeState extends State<SilverTime> {
         builder: (context, ui, _) {
           ui.fetchSettings ();
           Provider.of<Auth> (context, listen: false).tryAutoLogin ();
+          _listeners (context);
           return MaterialApp(
             title: appName,
             debugShowCheckedModeBanner: runtime == "Test",
@@ -69,7 +129,7 @@ class _SilverTimeState extends State<SilverTime> {
             themeMode: ThemeMode.light,
             initialRoute: SplashScreen.routeName,
             navigatorKey: locator<NavigationService> ().navigatorKey,
-            builder: (cx, child) {
+            builder: (ctx, child) {
               return ScrollConfiguration(
                 behavior: ScrollClean ().copyWith(
                   scrollbars: false
