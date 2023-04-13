@@ -51,7 +51,7 @@ class RouterAdmin {
       );
 
       bool auth = Provider.of<Auth> (context, listen: false).tryAutoLogin ();
-      if (routingData.route != "/splash" || routingData.route != "/first-time") {
+      if (routingData.route != "/splash" && routingData.route != "/first-time") {
         if (!auth) {
           printWarning ("Not authenticated");
           printWarning ("Redirecting");
