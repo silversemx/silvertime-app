@@ -55,9 +55,9 @@ class _NotificationsScreenState extends State<NotificationsScreen> with TickerPr
       _subjects.add(
         NotificationSubject (
           color: const Color.fromARGB(105, 68, 81, 97),
-          id: "other_internal",
+          id: "No_subject",
           name: S.of(context).serviceType_other,
-          description: "Other subject",
+          description: "No subjects",
           date: DateTime.now ()
         )
       );
@@ -188,7 +188,11 @@ class _NotificationsScreenState extends State<NotificationsScreen> with TickerPr
               children: [
                 SlidableAction(
                   onPressed: (ctx) async {
-                    bool? retval = await showConfirmDialog(context, title: S.of(context).areYouSure, body: S.of(context).thisCantBeUndone);
+                    bool? retval = await showConfirmDialog(
+                      context, 
+                      title: S.of(context).areYouSure, 
+                      body: S.of(context).thisCantBeUndone
+                    );
     
                     if (retval ?? false) {
                       NotificationsManager.instance.deleteNotification(notification.id);
@@ -237,12 +241,15 @@ class _NotificationsScreenState extends State<NotificationsScreen> with TickerPr
                 );
               }
               Map<String, List<PushNotification>> notificationsGroupedBySubject = (
-                snapshot.data ?? []).groupListsBy((element) => element.subject
-              );
+                snapshot.data ?? []).groupListsBy(
+                  (element) => element.subject
+                );
         
               List<Widget> children = [];
               for (NotificationSubject subject in _subjects) {
-                List<PushNotification>? notifs = notificationsGroupedBySubject [subject.id];
+                List<PushNotification>? notifs = notificationsGroupedBySubject [
+                  subject.id
+                ];
             
                 if (notifs != null) {
                   children.add (
@@ -268,6 +275,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> with TickerPr
                   _tabs (),
                   Expanded(
                     child: ExtendedTabBarView(
+                      physics: const NeverScrollableScrollPhysics(),
                       controller: _tabController,
                       children: children
                     ),
