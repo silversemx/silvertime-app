@@ -3022,6 +3022,16 @@ class S {
     );
   }
 
+  /// `Subject`
+  String get subject {
+    return Intl.message(
+      'Subject',
+      name: 'subject',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Zone`
   String get zone {
     return Intl.message(

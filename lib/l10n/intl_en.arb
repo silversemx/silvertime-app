@@ -323,5 +323,6 @@
     "workerSuccessfullyDeleted": "Worker successfully deleted",
     "workerSuccessfullyUpdated": "Worker successfully updated",
     "yourAccount": "Account",
+    "subject": "Subject",
     "zone": "Zone"
 }

@@ -293,6 +293,7 @@
     "workerResources": "Recursos de worker",
     "workerResourceSuccessfullyCreated": "Recurso de Worker creado correctamente",
     "workerResourceSuccessfullyDeleted": "Recurso de Worker eliminado correctamente",
+    "subject": "Asunto",
     "workerResourceSuccessfullyUpdated": "Recurso de Worker actualizado correctamente",
     "workers": "Workers",
     "workerSuccessfullyCreated": "Worker creado correctamente",

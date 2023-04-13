@@ -356,6 +356,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "storageSuccessfullyUpdated": MessageLookupByLibrary.simpleMessage(
             "The Storage was successfully updated"),
         "storages": MessageLookupByLibrary.simpleMessage("Storages"),
+        "subject": MessageLookupByLibrary.simpleMessage("Subject"),
         "success": MessageLookupByLibrary.simpleMessage("Success"),
         "system": MessageLookupByLibrary.simpleMessage("system"),
         "tapToRemoveTag":
