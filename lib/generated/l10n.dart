@@ -130,11 +130,41 @@ class S {
     );
   }
 
+  /// `Camera`
+  String get camera {
+    return Intl.message(
+      'Camera',
+      name: 'camera',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Cancel`
   String get cancel {
     return Intl.message(
       'Cancel',
       name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Capture another picture`
+  String get captureAnotherImage {
+    return Intl.message(
+      'Capture another picture',
+      name: 'captureAnotherImage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Capture picture`
+  String get captureImage {
+    return Intl.message(
+      'Capture picture',
+      name: 'captureImage',
       desc: '',
       args: [],
     );
@@ -225,6 +255,16 @@ class S {
     return Intl.message(
       'Create Network',
       name: 'createNetwork',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Report`
+  String get createReport {
+    return Intl.message(
+      'Create Report',
+      name: 'createReport',
       desc: '',
       args: [],
     );
@@ -537,6 +577,16 @@ class S {
     return Intl.message(
       'Edit Network',
       name: 'editNetwork',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Report`
+  String get editReport {
+    return Intl.message(
+      'Edit Report',
+      name: 'editReport',
       desc: '',
       args: [],
     );
@@ -872,6 +922,16 @@ class S {
     );
   }
 
+  /// `Gallery`
+  String get gallery {
+    return Intl.message(
+      'Gallery',
+      name: 'gallery',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Generate reports from your phone 📱, let everyone know something has happened right away!`
   String get generateReports {
     return Intl.message(
@@ -1032,6 +1092,16 @@ class S {
     );
   }
 
+  /// `Last name`
+  String get lastname {
+    return Intl.message(
+      'Last name',
+      name: 'lastname',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Legal`
   String get legal {
     return Intl.message(
@@ -1057,6 +1127,16 @@ class S {
     return Intl.message(
       'Login',
       name: 'login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Log out`
+  String get logout {
+    return Intl.message(
+      'Log out',
+      name: 'logout',
       desc: '',
       args: [],
     );
@@ -1432,6 +1512,16 @@ class S {
     );
   }
 
+  /// `Notifications`
+  String get notifications {
+    return Intl.message(
+      'Notifications',
+      name: 'notifications',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `An item must be selected`
   String get notSelected {
     return Intl.message(
@@ -1472,11 +1562,41 @@ class S {
     );
   }
 
+  /// `Pick an image`
+  String get pickAnImage {
+    return Intl.message(
+      'Pick an image',
+      name: 'pickAnImage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pick another image`
+  String get pickAnotherImage {
+    return Intl.message(
+      'Pick another image',
+      name: 'pickAnotherImage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Platform overview`
   String get platformOverview {
     return Intl.message(
       'Platform overview',
       name: 'platformOverview',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Posted By`
+  String get postedBy {
+    return Intl.message(
+      'Posted By',
+      name: 'postedBy',
       desc: '',
       args: [],
     );
@@ -1597,6 +1717,36 @@ class S {
     return Intl.message(
       'Reports',
       name: 'reports',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Report successfully created`
+  String get reportSuccessfullyCreated {
+    return Intl.message(
+      'Report successfully created',
+      name: 'reportSuccessfullyCreated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Report successfully deleted`
+  String get reportSuccessfullyDeleted {
+    return Intl.message(
+      'Report successfully deleted',
+      name: 'reportSuccessfullyDeleted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Report successfully updated`
+  String get reportSuccessfullyUpdated {
+    return Intl.message(
+      'Report successfully updated',
+      name: 'reportSuccessfullyUpdated',
       desc: '',
       args: [],
     );
@@ -2462,6 +2612,16 @@ class S {
     );
   }
 
+  /// `This action can't be undone`
+  String get thisCantBeUndone {
+    return Intl.message(
+      'This action can\'t be undone',
+      name: 'thisCantBeUndone',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Tier`
   String get tier {
     return Intl.message(
@@ -2527,6 +2687,16 @@ class S {
     return Intl.message(
       'Update Status',
       name: 'updateStatus',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User information`
+  String get userInformation {
+    return Intl.message(
+      'User information',
+      name: 'userInformation',
       desc: '',
       args: [],
     );
@@ -2822,146 +2992,6 @@ class S {
     );
   }
 
-  /// `Pick another image`
-  String get pickAnotherImage {
-    return Intl.message(
-      'Pick another image',
-      name: 'pickAnotherImage',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Pick an image`
-  String get pickAnImage {
-    return Intl.message(
-      'Pick an image',
-      name: 'pickAnImage',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Capture another picture`
-  String get captureAnotherImage {
-    return Intl.message(
-      'Capture another picture',
-      name: 'captureAnotherImage',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Capture picture`
-  String get captureImage {
-    return Intl.message(
-      'Capture picture',
-      name: 'captureImage',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Camera`
-  String get camera {
-    return Intl.message(
-      'Camera',
-      name: 'camera',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Create Report`
-  String get createReport {
-    return Intl.message(
-      'Create Report',
-      name: 'createReport',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Posted By`
-  String get postedBy {
-    return Intl.message(
-      'Posted By',
-      name: 'postedBy',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `User information`
-  String get userInformation {
-    return Intl.message(
-      'User information',
-      name: 'userInformation',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Last name`
-  String get lastname {
-    return Intl.message(
-      'Last name',
-      name: 'lastname',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Edit Report`
-  String get editReport {
-    return Intl.message(
-      'Edit Report',
-      name: 'editReport',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Report successfully created`
-  String get reportSuccessfullyCreated {
-    return Intl.message(
-      'Report successfully created',
-      name: 'reportSuccessfullyCreated',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Report successfully deleted`
-  String get reportSuccessfullyDeleted {
-    return Intl.message(
-      'Report successfully deleted',
-      name: 'reportSuccessfullyDeleted',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Report successfully updated`
-  String get reportSuccessfullyUpdated {
-    return Intl.message(
-      'Report successfully updated',
-      name: 'reportSuccessfullyUpdated',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Gallery`
-  String get gallery {
-    return Intl.message(
-      'Gallery',
-      name: 'gallery',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Worker successfully deleted`
   String get workerSuccessfullyDeleted {
     return Intl.message(
@@ -2987,16 +3017,6 @@ class S {
     return Intl.message(
       'Account',
       name: 'yourAccount',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Log out`
-  String get logout {
-    return Intl.message(
-      'Log out',
-      name: 'logout',
       desc: '',
       args: [],
     );

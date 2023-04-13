@@ -226,6 +226,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("There are no services"),
         "notSelected":
             MessageLookupByLibrary.simpleMessage("An item must be selected"),
+        "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
         "okay": MessageLookupByLibrary.simpleMessage("Okay"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "path": MessageLookupByLibrary.simpleMessage("Path"),
@@ -362,6 +363,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "the": MessageLookupByLibrary.simpleMessage("The"),
         "thisActionCantBeUndone": MessageLookupByLibrary.simpleMessage(
             "This action can\'t be undone!"),
+        "thisCantBeUndone": MessageLookupByLibrary.simpleMessage(
+            "This action can\'t be undone"),
         "tier": MessageLookupByLibrary.simpleMessage("Tier"),
         "time": MessageLookupByLibrary.simpleMessage("Time"),
         "title": MessageLookupByLibrary.simpleMessage("Title"),
