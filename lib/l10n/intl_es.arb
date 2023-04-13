@@ -284,7 +284,8 @@
     "workspaceSuccessfullyCreated": "Workspace creado correctamente",
     "workspaceSuccessfullyDeleted": "Workspace eliminado correctamente",
     "workspaceSuccessfullyUpdated": "Workspace actualizado correctamente",
-    "yourAccount": "Tu cuenta",
+    "yourAccount": "Cuenta",
+    "logout": "Cerrar Sesión",
     "pickAnotherImage": "Selecciona otra imagen",
     "pickAnImage": "Selecciona una imagen",
     "captureAnotherImage": "Captura otra foto",
@@ -298,5 +299,6 @@
     "reportSuccessfullyUpdated": "Reporte actualizado correctamente",
     "postedBy": "Publicado por",
     "userInformation": "User information",
+    "lastname": "Apellido",
     "zone": "Zona"
 }

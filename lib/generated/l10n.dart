@@ -2902,6 +2902,16 @@ class S {
     );
   }
 
+  /// `Last name`
+  String get lastname {
+    return Intl.message(
+      'Last name',
+      name: 'lastname',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Edit Report`
   String get editReport {
     return Intl.message(
@@ -2972,11 +2982,21 @@ class S {
     );
   }
 
-  /// `Your Account`
+  /// `Account`
   String get yourAccount {
     return Intl.message(
-      'Your Account',
+      'Account',
       name: 'yourAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Log out`
+  String get logout {
+    return Intl.message(
+      'Log out',
+      name: 'logout',
       desc: '',
       args: [],
     );

@@ -160,9 +160,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "invalidEmail": MessageLookupByLibrary.simpleMessage("Email Invalido"),
         "knowOverviewText": MessageLookupByLibrary.simpleMessage(
             "Obten información completa de caídas, interrupciones y mantenimientos, todo en un mismo lugar"),
+        "lastname": MessageLookupByLibrary.simpleMessage("Apellido"),
         "legal": MessageLookupByLibrary.simpleMessage("Legal"),
         "limit": MessageLookupByLibrary.simpleMessage("Servicios por página"),
         "login": MessageLookupByLibrary.simpleMessage("Iniciar Sesión"),
+        "logout": MessageLookupByLibrary.simpleMessage("Cerrar Sesión"),
         "machine": MessageLookupByLibrary.simpleMessage("Instancia"),
         "machineConfigurationUpdatedSuccessfully":
             MessageLookupByLibrary.simpleMessage(
@@ -413,7 +415,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "workerSuccessfullyUpdated": MessageLookupByLibrary.simpleMessage(
             "Worker actualizado correctamente"),
         "workers": MessageLookupByLibrary.simpleMessage("Workers"),
-        "yourAccount": MessageLookupByLibrary.simpleMessage("Tu cuenta"),
+        "yourAccount": MessageLookupByLibrary.simpleMessage("Cuenta"),
         "zone": MessageLookupByLibrary.simpleMessage("Zona")
       };
 }

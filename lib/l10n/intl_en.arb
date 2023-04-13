@@ -311,6 +311,7 @@
     "createReport": "Create Report",
     "postedBy": "Posted By",
     "userInformation": "User information",
+    "lastname": "Last name",
     "editReport": "Edit Report",
     "reportSuccessfullyCreated": "Report successfully created",
     "reportSuccessfullyDeleted": "Report successfully deleted",
@@ -318,6 +319,7 @@
     "gallery": "Gallery",
     "workerSuccessfullyDeleted": "Worker successfully deleted",
     "workerSuccessfullyUpdated": "Worker successfully updated",
-    "yourAccount": "Your Account",
+    "yourAccount": "Account",
+    "logout": "Log out",
     "zone": "Zone"
 }
