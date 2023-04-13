@@ -21,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey();
   bool _loading = false;
   bool _success = false;
-  bool _visiblePassword = false;
+  bool _visiblePassword = true;
 
   void _login () async {
     unfocus(context);
