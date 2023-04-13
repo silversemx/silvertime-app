@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:silvertime/include.dart';
 import 'package:silvertime/providers.dart';
 import 'package:silvertime/providers/auth.dart';
+import 'package:silvertime/providers/notifications/push_notifications.dart';
 import 'package:silvertime/providers/ui.dart';
 import 'package:silvertime/router.dart';
 import 'package:silvertime/screens/splash.dart';
@@ -12,6 +13,7 @@ import 'package:url_strategy/url_strategy.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized ();
+  await PushNotificationsService.initializeApp ();
   setPathUrlStrategy();
   await setupLocator ();
   runApp(const SilverTime());
