@@ -116,7 +116,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> with TickerPr
       child: Container (
         decoration: containerDecoration,
         margin: const EdgeInsets.symmetric(
-          vertical: 16
+          vertical: 6
         ),
         padding: const EdgeInsets.symmetric(
           vertical: 16,
@@ -221,12 +221,6 @@ class _NotificationsScreenState extends State<NotificationsScreen> with TickerPr
       },
       child: Scaffold(
         bottomNavigationBar: const BottomBar(),
-        appBar: AppBar (
-          title: Text (
-            S.of (context).notifications,
-            style: Theme.of(context).textTheme.displayMedium,
-          ),
-        ),
         body: SafeArea(
           bottom: false,
           child: StreamBuilder<List<PushNotification>>(
