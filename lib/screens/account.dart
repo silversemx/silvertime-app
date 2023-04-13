@@ -80,9 +80,21 @@ class _AccountScreenState extends State<AccountScreen> {
               ),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
-                  return Text (
-                    S.of (context).noInformation,
-                    style: Theme.of(context).textTheme.bodyLarge,
+                  return SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.8,
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text (
+                            S.of (context).noInformation,
+                            style: Theme.of(context).textTheme.displayMedium,
+                          ),
+                          _buttons (),
+                        ],
+                      ),
+                    ),
                   );
                 }
                 return Column (
