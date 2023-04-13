@@ -10,8 +10,6 @@ import 'package:silvertime/include.dart';
 import 'package:silvertime/models/resources/service/service.dart';
 import 'package:silvertime/models/resources/service/service_instance.dart';
 import 'package:silvertime/models/status/reports/report.dart';
-import 'package:silvertime/models/status/reports/report_types.dart';
-import 'package:silvertime/models/system/types.dart';
 import 'package:silvertime/providers/resources/services/instances.dart';
 import 'package:silvertime/providers/resources/services/services.dart';
 import 'package:silvertime/providers/status/reports.dart';
